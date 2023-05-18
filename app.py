@@ -273,7 +273,6 @@ def enviarcontacto_eata(mobile):
           "country_code": "COUNTRY_CODE",
           "type": "WORK"
         }],
-      "birthday": "YEAR_MONTH_DAY",
       "emails": [{
           "email": "EMAIL",
           "type": "WORK"
