@@ -193,7 +193,7 @@ https://instagram.com/joyhauser_ ''',mobile)
 https://instagram.com/manusanchez__''',mobile)
                         volveralmenuprincipal(mobile)
                     elif message_id == "b2":
-                        volveralmenuprincipal()
+                        volveralmenuprincipal(mobile)
 
 
 
