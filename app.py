@@ -69,12 +69,12 @@ def hook():
                             "body": "Elige una de las siguientes opciones",
                             "footer": "WakeUp & Dream - EventBot",
                             "action": {
-                                "button": "Lista de locales",
+                                "button": "Lista de Opciones",
                                 "sections": [
                                     {
-                                        "title": "Zona Puerto",
+                                        "title": "Información general",
                                         "rows": [
-                                            {"id": "row 10", "title": "Pelicano", "description": ""},
+                                            {"id": "row 10", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
                                             {
                                                 "id": "row 11",
                                                 "title": "My",
