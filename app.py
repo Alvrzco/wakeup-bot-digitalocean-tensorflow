@@ -256,61 +256,24 @@ def enviarcontacto_eata(mobile):
     try:
         contacts = [{
       "addresses": [{
-          "street": "STREET",
-          "city": "CITY",
-          "state": "STATE",
-          "zip": "ZIP",
-          "country": "COUNTRY",
-          "country_code": "COUNTRY_CODE",
+          "country": "España",
+          "country_code": "34",
           "type": "HOME"
-        },
-        {
-          "street": "STREET",
-          "city": "CITY",
-          "state": "STATE",
-          "zip": "ZIP",
-          "country": "COUNTRY",
-          "country_code": "COUNTRY_CODE",
-          "type": "WORK"
-        }],
-      "emails": [{
-          "email": "EMAIL",
-          "type": "WORK"
-        },
-        {
-          "email": "EMAIL",
-          "type": "HOME"
-        }],
+        }
+       ], 
       "name": {
-        "formatted_name": "NAME",
-        "first_name": "FIRST_NAME",
-        "last_name": "LAST_NAME",
-        "middle_name": "MIDDLE_NAME",
-        "suffix": "SUFFIX",
-        "prefix": "PREFIX"
+        "formatted_name": "Entradasatualcance",
+        "first_name": "Entradasatualcance"
       },
       "org": {
-        "company": "COMPANY",
-        "department": "DEPARTMENT",
-        "title": "TITLE"
+        "company": "ENTRADAS A TU ALCANCE",
+        "department": "VENTA DE TICKETS"
       },
       "phones": [{
-          "phone": "PHONE_NUMBER",
+          "phone": "+34910053595",
           "type": "HOME"
-        },
-        {
-          "phone": "PHONE_NUMBER",
-          "type": "WORK",
-          "wa_id": "PHONE_OR_WA_ID"
-        }],
-      "urls": [{
-          "url": "URL",
-          "type": "WORK"
-        },
-        {
-          "url": "URL",
-          "type": "HOME"
-        }]
+        }
+        ],
     }]
         messenger.send_contacts(contacts, mobile)
 
