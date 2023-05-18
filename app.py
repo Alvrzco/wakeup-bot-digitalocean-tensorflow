@@ -269,11 +269,12 @@ def enviarcontacto_eata(mobile):
                         "name": [
                             {
                                 "formatted_name": "Entradas a tu alcance",
+                                "first_name" : "Entradas a tu alcance"
                             }
                         ],
                         "phones": [
                             {
-                                "phone": "34910053595",
+                                "phone": "34910053595"
                             }
                         ]
                     }
