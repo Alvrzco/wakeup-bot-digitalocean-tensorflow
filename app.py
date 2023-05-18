@@ -116,9 +116,9 @@ def hook():
                         enviarcontacto_eata(mobile)
                         volveralmenuprincipal(mobile)
 
-                    elif message_id == "infogeneral_cargoduplicado_otros":
+                    elif message_id == "infogeneral_cargoduplicado":
                         #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
-                        messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral",mobile)
+                        messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
                         volveralmenuprincipal(mobile)
 
                     elif message_id == "infogeneral_otros":
