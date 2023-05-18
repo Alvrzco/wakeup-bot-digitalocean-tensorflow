@@ -121,6 +121,7 @@ def hook():
                     message_id = message_response[intractive_type]["id"]
 
                     if message_id == "ayudacompra":
+
                         button_ayudacompra={
                             "header": "Ayuda proceso de compra",
                             "body": "Elige una de las siguientes opciones",
@@ -149,7 +150,7 @@ def hook():
                             }
                         }
                     messenger.send_button(button_ayudacompra,mobile)
-                    #volveralmenuprincipal(mobile)
+                    volveralmenuprincipal(mobile)
 
                     message_text = message_response[intractive_type]["title"]
                     logging.info(f"Interactive Message; {message_id}: {message_text}")
@@ -202,7 +203,25 @@ def hook():
                     print("No new message")
         return "ok"
 
-
+def volveralmenuprincipal(mobile):
+    button={
+                            "type": "button",
+                            "body": {
+                                "text": "¿Quieres volver al menú principal?"
+                            },
+                            "action": {
+                                "buttons": [
+                                    {
+                                        "type": "reply",
+                                        "reply": {
+                                            "id": "menu_si",
+                                            "title": "Sí"
+                                        }
+                                    }                        
+                                ]
+                            }
+                        }
+    messenger.send_reply_button(button,mobile)
 
 if __name__ == '__main__': 
     app.run(debug=True)
