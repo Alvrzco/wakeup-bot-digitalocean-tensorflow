@@ -64,6 +64,16 @@ def hook():
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    
+
+                elif message_type == "interactive":
+                    message_response = messenger.get_interactive_response(data)
+                    intractive_type = message_response.get("type")
+                    message_id = message_response[intractive_type]["id"]
+                    message_text = message_response[intractive_type]["title"]
+                    logging.info(f"Interactive Message; {message_id}: {message_text}")
+
+                elif message_type == "button":
                     button={
                             "header": "Menú principal",
                             "body": "Elige una de las siguientes opciones",
@@ -74,11 +84,11 @@ def hook():
                                     {
                                         "title": "Información general",
                                         "rows": [
-                                            {"id": "row 1", "title": "Info general entradas", "description": "Información general sobre las entradas, página de venta y precios."},
+                                            {"id": "row 1", "title": "Info general entradas", "description": ""},
                                             {
                                                 "id": "row 2",
                                                 "title": "Ayuda proceso de compra",
-                                                "description": "Errores durante la compra, la entrada no te ha llegado, no sabes como descargarla, tienes un cargo duplicado en tu cuenta, etc ...",
+                                                "description": "",
                                             },
                                             {
                                                 "id": "row 3",
@@ -88,12 +98,12 @@ def hook():
                                             {
                                                 "id": "row 4",
                                                 "title": "Localización y zonas de aparcamiento",
-                                                "description": "Te enviamos el mapa de las zonas para estacionar vehículos.",
+                                                "description": "",
                                             },
                                             {
                                                 "id": "row 5",
                                                 "title": "Mapa del Festival",
-                                                "description": "Te enviamos un mapa completo del festival para que lo tengas en tu teléfono.",
+                                                "description": "",
                                             }
                                         ]
                                     },
@@ -114,13 +124,6 @@ def hook():
                         }
                     messenger.send_message(f"hola",mobile)
                     messenger.send_button(button,mobile)
-
-                elif message_type == "interactive":
-                    message_response = messenger.get_interactive_response(data)
-                    intractive_type = message_response.get("type")
-                    message_id = message_response[intractive_type]["id"]
-                    message_text = message_response[intractive_type]["title"]
-                    logging.info(f"Interactive Message; {message_id}: {message_text}")
 
                 elif message_type == "location":
                     message_location = messenger.get_location(data)
