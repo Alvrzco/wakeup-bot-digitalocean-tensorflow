@@ -63,7 +63,7 @@ def hook():
                     message = messenger.get_message(data)
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
-                    messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     button={
                             "header": "Menú principal",
                             "body": "Elige una de las siguientes opciones",
