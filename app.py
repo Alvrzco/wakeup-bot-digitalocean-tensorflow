@@ -120,7 +120,7 @@ def hook():
                     intractive_type = message_response.get("type")
                     message_id = message_response[intractive_type]["id"]
 
-                    elif message_id == "ayudacompra":
+                    if message_id == "ayudacompra":
                         button_ayudacompra={
                             "header": "Ayuda proceso de compra",
                             "body": "Elige una de las siguientes opciones",
