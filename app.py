@@ -273,7 +273,7 @@ def enviarcontacto_eata(mobile):
                         ],
                         "phones": [
                             {
-                                "wa_id": "34910053595",
+                                "phone": "34910053595",
                             }
                         ]
                     }
