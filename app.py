@@ -133,6 +133,35 @@ https://instagram.com/wakeupand_dreamfestival
                     
                     ############################################################ LINEUP #####################################################################
                     elif message_id == "lineup":
+                        messenger.send_image('https://i.ibb.co/58X961H/wakeupfest.jpg',mobile)
+                        messenger.send_reply_button(
+        recipient_id="255757xxxxxx",
+        button={
+            "type": "button",
+            "body": {
+                "text": "¿Quieres que te envíe los perfiles de Instagram de lxs artistas?"
+            },
+            "action": {
+                "buttons": [
+                    {
+                        "type": "reply",
+                        "reply": {
+                            "id": "b1",
+                            "title": "SÍ"
+                        }
+                    },
+                    {
+                        "type": "reply",
+                        "reply": {
+                            "id": "b2",
+                            "title": "NO"
+                        }
+                    }
+                ]
+            }
+      },
+    )
+                    elif message_id == "b1":
                         messenger.send_message('''🔥*LINE UP* 🔥''',mobile)
                         messenger.send_message(''' *14 DE JULIO* ''',mobile)
                         messenger.send_message('''*CARL COX INVITES*
@@ -164,6 +193,11 @@ https://instagramc.com/raulpacheco_''',mobile)
 https://instagram.com/joyhauser_ ''',mobile)
                         messenger.send_message('''*MANU SANCHEZ*
 https://instagram.com/manusanchez__''',mobile)
+                        volveralmenuprincipal(mobile)
+                    elif message_id == "b2":
+                        volveralmenuprincipal()
+
+
 
                     ###########################################################################################################################################
 
