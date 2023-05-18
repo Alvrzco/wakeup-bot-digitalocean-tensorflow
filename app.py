@@ -131,12 +131,12 @@ def hook():
                                 "button": "Lista de Opciones",
                                 "sections": [
                                     {
-                                        "title": "No me ha llegado la entrada",
+                                        "title": "Entrada no recibida",
                                         "rows": [
                                             {"id": "infogeneral_nollegaentrada", "title": ""},
                                             {
                                                 "id": "infogeneral_cargoduplicado",
-                                                "title": "Tengo un cargo duplicado",
+                                                "title": "Cargo duplicado",
                                                 "description": "",
                                             },
                                             {
