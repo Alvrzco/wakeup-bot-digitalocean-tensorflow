@@ -87,7 +87,7 @@ def hook():
                                             },
                                             {
                                                 "id": "geoyparking",
-                                                "title": "Localización y aparcamiento",
+                                                "title": "Localización y parking",
                                                 "description": "Localización del festival y aparcamientos.",
                                             },
                                             {
