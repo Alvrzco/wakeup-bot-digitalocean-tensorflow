@@ -87,8 +87,8 @@ def hook():
                                             },
                                             {
                                                 "id": "row 13",
-                                                "title": "Localización",
-                                                "description": "",
+                                                "title": "Localización y mapas",
+                                                "description": "Mapa completo y localización del festival.",
                                             },
                                             {
                                                 "id": "row 14",
