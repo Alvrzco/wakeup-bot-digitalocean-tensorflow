@@ -124,8 +124,7 @@ def hook():
                                 ]
                             }
                         }
-                
-                        messenger.send_button(button,mobile)
+                    messenger.send_button(button,mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
