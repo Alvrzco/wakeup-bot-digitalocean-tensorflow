@@ -67,46 +67,56 @@ def hook():
                     button={
                             "header": "Menú principal",
                             "body": "Elige una de las siguientes opciones",
-                            "footer": "EventBot - WakeUp & Dream",
+                            "footer": "WakeUp & Dream - EventBot",
                             "action": {
-                                "button": "OPCIONES",
+                                "button": "Lista de locales",
                                 "sections": [
                                     {
-                                        "title": "Información general",
+                                        "title": "Zona Puerto",
                                         "rows": [
-                                            {"id": "row 1", "title": "Info general entradas", "description": ""},
+                                            {"id": "row 10", "title": "Pelicano", "description": ""},
                                             {
-                                                "id": "row 2",
-                                                "title": "Ayuda proceso de compra",
+                                                "id": "row 11",
+                                                "title": "My",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 3",
-                                                "title": "LINE UP",
+                                                "id": "row 12",
+                                                "title": "Dux",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 4",
-                                                "title": "Localización y zonas de aparcamiento",
+                                                "id": "row 13",
+                                                "title": "Amura",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 5",
-                                                "title": "Mapa del Festival",
+                                                "id": "row 14",
+                                                "title": "Brit",
+                                                "description": "",
+                                            },
+                                            {
+                                                "id": "row 15",
+                                                "title": "Inn",
                                                 "description": "",
                                             }
                                         ]
                                     },
                                     {
-                                        "title": "Transporte",
+                                        "title": "Zona Riazor",
                                         "rows": [
-                                            {"id": "row 7", "title": "Taxis", "description": ""},
+                                            {"id": "row 16", "title": "Playa Club", "description": ""},
                                             {
-                                                "id": "row 8",
-                                                "title": "Buses",
+                                                "id": "row 17",
+                                                "title": "Andén",
                                                 "description": "",
-                                            }
-                                           
+                                            },
+                                            {
+                                                "id": "row 18",
+                                                "title": "Oceánico",
+                                                "description": "",
+                                            }          
+                                
                                         ]
                                     }
                                 ]
