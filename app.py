@@ -255,23 +255,22 @@ def menuprincipal(mobile):
 def enviarcontacto_eata(mobile):
     try:
         contacts = [{
-      "addresses": [{
-          "country": "España",
-          "country_code": "34",
-          "type": "HOME"
-        }
-       ], 
       "name": {
         "formatted_name": "Entradasatualcance",
         "first_name": "Entradasatualcance"
       },
+      "emails": [{
+          "email": "info@ayudaeventos.com",
+          "type": "WORK"
+        }
+        ],
       "org": {
         "company": "ENTRADAS A TU ALCANCE",
         "department": "VENTA DE TICKETS"
       },
       "phones": [{
           "phone": "+34910053595",
-          "type": "HOME"
+          "type": "WORK"
         }
         ],
     }]
