@@ -124,8 +124,8 @@ def hook():
                     elif message_id == "infogeneral_otros":
                         #messenger.send_template("eventbot_ayudaotros", mobile, components=[], lang="es_ES")
                         messenger.send_message('''*OTRAS DUDAS*
-                        Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
-                        https://instagram.com/wakeupand_dreamfestival
+Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
+https://instagram.com/wakeupand_dreamfestival
                         ''',mobile)
                         volveralmenuprincipal(mobile)
 
