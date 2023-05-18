@@ -94,7 +94,7 @@ def hook():
                                                 "id": "row 14",
                                                 "title": "Mapa del festival",
                                                 "description": "Mapa completo por zonas del festival.",
-                                            },
+                                            }
                                         
                                         ]
                                     },
