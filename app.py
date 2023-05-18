@@ -67,7 +67,7 @@ def hook():
                     button={
                             "header": "Menú principal",
                             "body": "Elige una de las siguientes opciones",
-                            "footer": "EventBot - WakeUp & Dream - Ménú Principal",
+                            "footer": "EventBot - WakeUp & Dream",
                             "action": {
                                 "button": "OPCIONES",
                                 "sections": [
@@ -97,7 +97,18 @@ def hook():
                                             }
                                         ]
                                     },
-                                    
+                                    {
+                                        "title": "Transporte",
+                                        "rows": [
+                                            {"id": "row 7", "title": "Taxis", "description": "Información sobre taxis y otros servicios similares"},
+                                            {
+                                                "id": "row 8",
+                                                "title": "Buses",
+                                                "description": "Información sobre las líneas de autobús.",
+                                            }
+                                           
+                                        ]
+                                    }
                                 ]
                             }
                         }
