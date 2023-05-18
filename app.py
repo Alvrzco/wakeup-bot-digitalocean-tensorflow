@@ -87,8 +87,8 @@ def hook():
                                             },
                                             {
                                                 "id": "row 13",
-                                                "title": "Localización y zonas de aparcamiento",
-                                                "description": "Te enviamos la ubicación y las zonas de estacionamiento.",
+                                                "title": "Localización",
+                                                "description": "",
                                             },
                                             {
                                                 "id": "row 14",
