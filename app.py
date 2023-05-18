@@ -64,16 +64,6 @@ def hook():
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
-                    
-
-                elif message_type == "interactive":
-                    message_response = messenger.get_interactive_response(data)
-                    intractive_type = message_response.get("type")
-                    message_id = message_response[intractive_type]["id"]
-                    message_text = message_response[intractive_type]["title"]
-                    logging.info(f"Interactive Message; {message_id}: {message_text}")
-
-                elif message_type == "button":
                     button={
                             "header": "Reserva una mesa",
                             "body": "Elige el local en el que quieres el reservado",
@@ -133,6 +123,13 @@ def hook():
                             }
                         }
                     messenger.send_button(button,mobile)
+
+                elif message_type == "interactive":
+                    message_response = messenger.get_interactive_response(data)
+                    intractive_type = message_response.get("type")
+                    message_id = message_response[intractive_type]["id"]
+                    message_text = message_response[intractive_type]["title"]
+                    logging.info(f"Interactive Message; {message_id}: {message_text}")
 
                 elif message_type == "location":
                     message_location = messenger.get_location(data)
