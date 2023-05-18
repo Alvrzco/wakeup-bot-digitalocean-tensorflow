@@ -134,8 +134,7 @@ https://instagram.com/wakeupand_dreamfestival
                     ############################################################ LINEUP #####################################################################
                     elif message_id == "lineup":
                         messenger.send_image('https://i.ibb.co/58X961H/wakeupfest.jpg',mobile)
-                        messenger.send_reply_button(
-        recipient_id="255757xxxxxx",
+                        messenger.send_reply_button(mobile,
         button={
             "type": "button",
             "body": {
