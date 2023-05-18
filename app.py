@@ -65,58 +65,48 @@ def hook():
                     logging.info("Message: %s", message)
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     button={
-                            "header": "Reserva una mesa",
-                            "body": "Elige el local en el que quieres el reservado",
-                            "footer": "Reservados",
+                            "header": "Menú principal",
+                            "body": "Elige una de las siguientes opciones",
+                            "footer": "EventBot - WakeUp & Dream - Ménú Principal",
                             "action": {
-                                "button": "Lista de locales",
+                                "button": "OPCIONES",
                                 "sections": [
                                     {
-                                        "title": "Zona Puerto",
+                                        "title": "Información general",
                                         "rows": [
-                                            {"id": "row 10", "title": "Pelicano", "description": ""},
+                                            {"id": "row 1", "title": "Info general entradas", "description": ""},
                                             {
-                                                "id": "row 11",
-                                                "title": "My",
+                                                "id": "row 2",
+                                                "title": "Ayuda proceso de compra",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 12",
-                                                "title": "Dux",
-                                                "description": "",
+                                                "id": "row 3",
+                                                "title": "LINE UP",
+                                                "description": "LINE UP con todos los artistas.",
                                             },
                                             {
-                                                "id": "row 13",
-                                                "title": "Amura",
-                                                "description": "",
+                                                "id": "row 4",
+                                                "title": "Localización y zonas de aparcamiento",
+                                                "description": "Te enviamos el mapa de las zonas para estacionar vehículos.",
                                             },
                                             {
-                                                "id": "row 14",
-                                                "title": "Brit",
-                                                "description": "",
-                                            },
-                                            {
-                                                "id": "row 15",
-                                                "title": "Inn",
+                                                "id": "row 5",
+                                                "title": "Mapa del Festival",
                                                 "description": "",
                                             }
                                         ]
                                     },
                                     {
-                                        "title": "Zona Riazor",
+                                        "title": "Transporte",
                                         "rows": [
-                                            {"id": "row 16", "title": "Playa Club", "description": ""},
+                                            {"id": "row 7", "title": "Taxis", "description": "Información sobre taxis y otros servicios similares"},
                                             {
-                                                "id": "row 17",
-                                                "title": "Andén",
-                                                "description": "",
-                                            },
-                                            {
-                                                "id": "row 18",
-                                                "title": "Oceánico",
-                                                "description": "",
-                                            }          
-                                
+                                                "id": "row 8",
+                                                "title": "Buses",
+                                                "description": "Información sobre las líneas de autobús.",
+                                            }
+                                           
                                         ]
                                     }
                                 ]
