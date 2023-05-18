@@ -119,6 +119,7 @@ def hook():
                     elif message_id == "infogeneral_cargoduplicado":
                         #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
                         messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
+                        enviarcontacto_eata(mobile)
                         volveralmenuprincipal(mobile)
 
                     elif message_id == "infogeneral_otros":
@@ -130,8 +131,41 @@ https://instagram.com/wakeupand_dreamfestival
                         volveralmenuprincipal(mobile)
 
                     
-                    ###########################################################################################################################################
+                    ############################################################ LINEUP #####################################################################
+                    elif message_id == "lineup":
+                        messenger.send_message('''🔥*LINE UP* 🔥''',mobile)
+                        messenger.send_message(''' *14 DE JULIO* ''',mobile)
+                        messenger.send_message('''*CARL COX INVITES*
+https://instagram.com/carlcoxofficial''',mobile)
+                        messenger.send_message('''*ANDREA OLIVA*
+https://instagram.com/andreaoliva1''',mobile)
+                        messenger.send_message('''*CHELINA MANUHUTU*
+https://instagram.com/chelinamanuhutu''',mobile)
+                        messenger.send_message('''*FATIMA HAJJI*
+https://instagram.com/fatimahajji''',mobile)
+                        messenger.send_message('''*SQUIRE*
+https://instagram.com/squire.music''',mobile)
+                        messenger.send_message('''*SELLES*
+https://instagram.com/selles.dj''',mobile)
+                        messenger.send_message('''*ANDRE V*''')
+                        messenger.send_message(''' *15 DE JULIO* ''',mobile)
+                        messenger.send_message('''*AMELIE LENS*
+https://instagram.com/amelie_lens''',mobile)
+                        messenger.send_message('''*KLANGKUENSTLER*
+https://instagram.com/klangkuenstler''',mobile)
+                        messenger.send_message('''*BEN SIMS*
+https://instagram.com/bensimsofficial''',mobile)
+                        messenger.send_message('''*ANDRES CAMPO*
+https://instagram.com/andrescampo''',mobile)
+                        messenger.send_message('''*GONÇALO B2B RAUL PACHECO*
+https://instagram.com/goncalomusic
+https://instagramc.com/raulpacheco_''',mobile)
+                        messenger.send_message('''*JOYHAUSER*
+https://instagram.com/joyhauser_ ''',mobile)
+                        messenger.send_message('''*MANU SANCHEZ*
+https://instagram.com/manusanchez__''',mobile)
 
+                    ###########################################################################################################################################
 
 
                     message_text = message_response[intractive_type]["title"]
