@@ -147,7 +147,7 @@ https://instagram.com/fatimahajji''',mobile)
 https://instagram.com/squire.music''',mobile)
                         messenger.send_message('''*SELLES*
 https://instagram.com/selles.dj''',mobile)
-                        messenger.send_message('''*ANDRE V*''')
+                        messenger.send_message('''*ANDRE V*''',mobile)
                         messenger.send_message(''' *15 DE JULIO* ''',mobile)
                         messenger.send_message('''*AMELIE LENS*
 https://instagram.com/amelie_lens''',mobile)
