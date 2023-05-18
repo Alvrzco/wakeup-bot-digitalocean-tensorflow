@@ -77,46 +77,37 @@ def hook():
                                             {"id": "row 10", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
                                             {
                                                 "id": "row 11",
-                                                "title": "My",
-                                                "description": "",
+                                                "title": "Ayuda proceso de compra",
+                                                "description": "Tickets no recibidos, cargos duplicados, etc ...",
                                             },
                                             {
                                                 "id": "row 12",
-                                                "title": "Dux",
-                                                "description": "",
+                                                "title": "Line Up",
+                                                "description": "Line Up actualizado con todos los artistas.",
                                             },
                                             {
                                                 "id": "row 13",
-                                                "title": "Amura",
-                                                "description": "",
+                                                "title": "Localización y zonas de aparcamiento",
+                                                "description": "Te enviamos la ubicación y las zonas de estacionamiento.",
                                             },
                                             {
                                                 "id": "row 14",
-                                                "title": "Brit",
-                                                "description": "",
+                                                "title": "Mapa del festival",
+                                                "description": "Mapa completo por zonas del festival.",
                                             },
-                                            {
-                                                "id": "row 15",
-                                                "title": "Inn",
-                                                "description": "",
-                                            }
+                                        
                                         ]
                                     },
                                     {
-                                        "title": "Zona Riazor",
+                                        "title": "Llegar al festival",
                                         "rows": [
-                                            {"id": "row 16", "title": "Playa Club", "description": ""},
+                                            {"id": "row 16", "title": "Taxis", "description": "Información sobre taxis y transporte similar"},
                                             {
                                                 "id": "row 17",
-                                                "title": "Andén",
-                                                "description": "",
-                                            },
-                                            {
-                                                "id": "row 18",
-                                                "title": "Oceánico",
-                                                "description": "",
-                                            }          
-                                
+                                                "title": "Autobús",
+                                                "description": "Lista y mapa con las líneas de transporte público de la ciudad.",
+                                            }
+                                                 
                                         ]
                                     }
                                 ]
