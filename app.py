@@ -131,7 +131,7 @@ def hook():
                                     {
                                         "title": "Problemas entradas",
                                         "rows": [
-                                            {"id": "infogeneral_nollegaentrada", "title": "", "description": ""},
+                                            {"id": "infogeneral_nollegaentrada", "title": "Ticket(s) no recibido(s)", "description": ""},
                                             {
                                                 "id": "infogeneral_cargoduplicado",
                                                 "title": "Cargo duplicado",
