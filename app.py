@@ -83,12 +83,12 @@ def hook():
                                             {
                                                 "id": "row 3",
                                                 "title": "LINE UP",
-                                                "description": "LINE UP con todos los artistas.",
+                                                "description": "",
                                             },
                                             {
                                                 "id": "row 4",
                                                 "title": "Localización y zonas de aparcamiento",
-                                                "description": "Te enviamos el mapa de las zonas para estacionar vehículos.",
+                                                "description": "",
                                             },
                                             {
                                                 "id": "row 5",
@@ -100,11 +100,11 @@ def hook():
                                     {
                                         "title": "Transporte",
                                         "rows": [
-                                            {"id": "row 7", "title": "Taxis", "description": "Información sobre taxis y otros servicios similares"},
+                                            {"id": "row 7", "title": "Taxis", "description": ""},
                                             {
                                                 "id": "row 8",
                                                 "title": "Buses",
-                                                "description": "Información sobre las líneas de autobús.",
+                                                "description": "",
                                             }
                                            
                                         ]
