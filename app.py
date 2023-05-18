@@ -134,8 +134,7 @@ https://instagram.com/wakeupand_dreamfestival
                     ############################################################ LINEUP #####################################################################
                     elif message_id == "lineup":
                         messenger.send_image('https://i.ibb.co/58X961H/wakeupfest.jpg',mobile)
-                        messenger.send_reply_button(mobile,
-        button={
+                        button_reply={
             "type": "button",
             "body": {
                 "text": "¿Quieres que te envíe los perfiles de Instagram de lxs artistas?"
@@ -158,8 +157,8 @@ https://instagram.com/wakeupand_dreamfestival
                     }
                 ]
             }
-      },
-    )
+      }
+                        messenger.send_reply_button(mobile,button_reply)
                     elif message_id == "b1":
                         messenger.send_message('''🔥*LINE UP* 🔥''',mobile)
                         messenger.send_message(''' *14 DE JULIO* ''',mobile)
