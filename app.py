@@ -75,54 +75,63 @@ def hook():
 
                 elif message_type == "button":
                     button={
-                            "header": "Menú principal",
-                            "body": "Elige una de las siguientes opciones",
-                            "footer": "EventBot - WakeUp & Dream - Ménú Principal",
+                            "header": "Reserva una mesa",
+                            "body": "Elige el local en el que quieres el reservado",
+                            "footer": "Reservados",
                             "action": {
-                                "button": "OPCIONES",
+                                "button": "Lista de locales",
                                 "sections": [
                                     {
-                                        "title": "Información general",
+                                        "title": "Zona Puerto",
                                         "rows": [
-                                            {"id": "row 1", "title": "Info general entradas", "description": ""},
+                                            {"id": "row 10", "title": "Pelicano", "description": ""},
                                             {
-                                                "id": "row 2",
-                                                "title": "Ayuda proceso de compra",
+                                                "id": "row 11",
+                                                "title": "My",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 3",
-                                                "title": "LINE UP",
-                                                "description": "LINE UP con todos los artistas.",
-                                            },
-                                            {
-                                                "id": "row 4",
-                                                "title": "Localización y zonas de aparcamiento",
+                                                "id": "row 12",
+                                                "title": "Dux",
                                                 "description": "",
                                             },
                                             {
-                                                "id": "row 5",
-                                                "title": "Mapa del Festival",
+                                                "id": "row 13",
+                                                "title": "Amura",
+                                                "description": "",
+                                            },
+                                            {
+                                                "id": "row 14",
+                                                "title": "Brit",
+                                                "description": "",
+                                            },
+                                            {
+                                                "id": "row 15",
+                                                "title": "Inn",
                                                 "description": "",
                                             }
                                         ]
                                     },
                                     {
-                                        "title": "Transporte",
+                                        "title": "Zona Riazor",
                                         "rows": [
-                                            {"id": "row 7", "title": "Taxis", "description": "Información sobre taxis y otros servicios similares"},
+                                            {"id": "row 16", "title": "Playa Club", "description": ""},
                                             {
-                                                "id": "row 8",
-                                                "title": "Buses",
-                                                "description": "Información sobre las líneas de autobús.",
+                                                "id": "row 17",
+                                                "title": "Andén",
+                                                "description": "",
                                             },
-                                           
+                                            {
+                                                "id": "row 18",
+                                                "title": "Oceánico",
+                                                "description": "",
+                                            }          
+                                
                                         ]
                                     }
                                 ]
                             }
                         }
-                    messenger.send_message(f"hola",mobile)
                     messenger.send_button(button,mobile)
 
                 elif message_type == "location":
