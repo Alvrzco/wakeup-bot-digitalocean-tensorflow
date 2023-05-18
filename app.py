@@ -253,33 +253,37 @@ def menuprincipal(mobile):
     messenger.send_button(button,mobile)
 
 def enviarcontacto_eata(mobile):
-    contacts = [
-                    {
-                        "addresses": [
-                            {
-                                "street": "STREET",
-                                "city": "CITY",
-                                "state": "STATE",
-                                "zip": "ZIP",
-                                "country": "COUNTRY",
-                                "country_code": "34",
-                                "type": "HOME"
-                            }
-                        ],
-                        "name": [
-                            {
-                                "formatted_name": "Entradas a tu alcance",
-                                "first_name" : "Entradas a tu alcance"
-                            }
-                        ],
-                        "phones": [
-                            {
-                                "phone": "108434988707223"
-                            }
-                        ]
-                    }
-                ]
-    messenger.send_contacts(contacts, mobile)
+    try:
+        contacts = [
+                        {
+                            "addresses": [
+                                {
+                                    "street": "STREET",
+                                    "city": "CITY",
+                                    "state": "STATE",
+                                    "zip": "ZIP",
+                                    "country": "COUNTRY",
+                                    "country_code": "34",
+                                    "type": "HOME"
+                                }
+                            ],
+                            "name": [
+                                {
+                                    "formatted_name": "Entradas a tu alcance",
+                                    "first_name" : "Entradas a tu alcance"
+                                }
+                            ],
+                            "phones": [
+                                {
+                                    "phone": "108434988707223"
+                                }
+                            ]
+                        }
+                    ]
+        messenger.send_contacts(contacts, mobile)
+
+    except Exception as err:
+        messenger.send_message(str(err),mobile)
             
 if __name__ == '__main__': 
     app.run(debug=True)
