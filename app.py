@@ -274,7 +274,7 @@ def enviarcontacto_eata(mobile):
                         ],
                         "phones": [
                             {
-                                "phone": "34910053595"
+                                "phone": "108434988707223"
                             }
                         ]
                     }
