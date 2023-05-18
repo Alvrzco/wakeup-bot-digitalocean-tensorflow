@@ -63,6 +63,7 @@ def hook():
                     message = messenger.get_message(data)
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
+                    #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     menuprincipal(mobile)
 
@@ -71,11 +72,13 @@ def hook():
                     intractive_type = message_response.get("type")
                     message_id = message_response[intractive_type]["id"]
 
+                    #volver al menú principal
                     if message_id == "menu_si":
                         menuprincipal(mobile)
 
-
+                    ####################################################### AYUDA COMPRA ######################################################################
                     elif message_id == "ayudacompra":
+                        #Enviar mensaje template ayuda compra.
                         #messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
                         button_ayudacompra={
                             "header": "Ayuda proceso de compra",
@@ -94,7 +97,7 @@ def hook():
                                                 "description": "",
                                             },
                                             {
-                                                "id": "infogeneral_cargoduplicado_otros",
+                                                "id": "infogeneral_otros",
                                                 "title": "Otros problemas",
                                                 "description": "",
                                             }
@@ -104,8 +107,27 @@ def hook():
                                 ]
                             }
                         }
-                    messenger.send_button(button_ayudacompra,mobile)
-                    volveralmenuprincipal(mobile)
+                        messenger.send_button(button_ayudacompra,mobile)
+
+                    elif message_id == "infogeneral_nollegaentrada":
+                        #messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
+
+                        messenger.send_message(f"info@ayudaeventos.com",mobile)
+                        enviarcontacto_eata(mobile)
+                        volveralmenuprincipal(mobile)
+
+                    elif message_id == "infogeneral_cargoduplicado_otros":
+                        #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
+                        volveralmenuprincipal(mobile)
+
+                    elif message_id == "infogeneral_otros":
+                        #messenger.send_template("eventbot_ayudaotros", mobile, components=[], lang="es_ES")
+                        volveralmenuprincipal(mobile)
+
+                    
+                    ###########################################################################################################################################
+
+
 
                     message_text = message_response[intractive_type]["title"]
                     logging.info(f"Interactive Message; {message_id}: {message_text}")
@@ -230,5 +252,33 @@ def menuprincipal(mobile):
                         }
     messenger.send_button(button,mobile)
 
+def enviarcontacto_eata(mobile):
+    contacts = [
+                    {
+                        "addresses": [
+                            {
+                                "street": "STREET",
+                                "city": "CITY",
+                                "state": "STATE",
+                                "zip": "ZIP",
+                                "country": "COUNTRY",
+                                "country_code": "34",
+                                "type": "HOME"
+                            }
+                        ],
+                        "name": [
+                            {
+                                "formatted_name": "Entradas a tu alcance",
+                            }
+                        ],
+                        "phones": [
+                            {
+                                "wa_id": "34910053595",
+                            }
+                        ]
+                    }
+                ]
+    messenger.send_contacts(contacts, mobile)
+            
 if __name__ == '__main__': 
     app.run(debug=True)
