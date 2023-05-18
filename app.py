@@ -64,64 +64,19 @@ def hook():
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
-                    button={
-                            "header": "Menú principal",
-                            "body": "Elige una de las siguientes opciones",
-                            "footer": "WakeUp & Dream - EventBot",
-                            "action": {
-                                "button": "Lista de Opciones",
-                                "sections": [
-                                    {
-                                        "title": "Información general",
-                                        "rows": [
-                                            {"id": "infogeneral", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
-                                            {
-                                                "id": "ayudacompra",
-                                                "title": "Ayuda proceso de compra",
-                                                "description": "Tickets no recibidos, cargos duplicados, etc ...",
-                                            },
-                                            {
-                                                "id": "lineup",
-                                                "title": "Line Up",
-                                                "description": "Line Up actualizado con todos los artistas.",
-                                            },
-                                            {
-                                                "id": "geoyparking",
-                                                "title": "Localización y parking",
-                                                "description": "Localización del festival y aparcamientos.",
-                                            },
-                                            {
-                                                "id": "mapafesti",
-                                                "title": "Mapa del festival",
-                                                "description": "Mapa completo por zonas del festival.",
-                                            }
-                                        
-                                        ]
-                                    },
-                                    {
-                                        "title": "Llegar al festival",
-                                        "rows": [
-                                            {"id": "taxis", "title": "Taxi", "description": "Información sobre taxis y transporte similar"},
-                                            {
-                                                "id": "autobus",
-                                                "title": "Autobús",
-                                                "description": "Lista y mapa con las líneas de transporte público de la ciudad.",
-                                            }
-                                                 
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    messenger.send_button(button,mobile)
+                    menuprincipal(mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
                     intractive_type = message_response.get("type")
                     message_id = message_response[intractive_type]["id"]
 
-                    if message_id == "ayudacompra":
+                    if message_id == "menu_si":
+                        menuprincipal(mobile)
 
+
+                    elif message_id == "ayudacompra":
+                        #messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
                         button_ayudacompra={
                             "header": "Ayuda proceso de compra",
                             "body": "Elige una de las siguientes opciones",
@@ -222,6 +177,58 @@ def volveralmenuprincipal(mobile):
                             }
                         }
     messenger.send_reply_button(button,mobile)
+
+def menuprincipal(mobile):
+    button={
+                            "header": "Menú principal",
+                            "body": "Elige una de las siguientes opciones",
+                            "footer": "WakeUp & Dream - EventBot",
+                            "action": {
+                                "button": "Lista de Opciones",
+                                "sections": [
+                                    {
+                                        "title": "Información general",
+                                        "rows": [
+                                            {"id": "infogeneral", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
+                                            {
+                                                "id": "ayudacompra",
+                                                "title": "Ayuda proceso de compra",
+                                                "description": "Tickets no recibidos, cargos duplicados, etc ...",
+                                            },
+                                            {
+                                                "id": "lineup",
+                                                "title": "Line Up",
+                                                "description": "Line Up actualizado con todos los artistas.",
+                                            },
+                                            {
+                                                "id": "geoyparking",
+                                                "title": "Localización y parking",
+                                                "description": "Localización del festival y aparcamientos.",
+                                            },
+                                            {
+                                                "id": "mapafesti",
+                                                "title": "Mapa del festival",
+                                                "description": "Mapa completo por zonas del festival.",
+                                            }
+                                        
+                                        ]
+                                    },
+                                    {
+                                        "title": "Llegar al festival",
+                                        "rows": [
+                                            {"id": "taxis", "title": "Taxi", "description": "Información sobre taxis y transporte similar"},
+                                            {
+                                                "id": "autobus",
+                                                "title": "Autobús",
+                                                "description": "Lista y mapa con las líneas de transporte público de la ciudad.",
+                                            }
+                                                 
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+    messenger.send_button(button,mobile)
 
 if __name__ == '__main__': 
     app.run(debug=True)
