@@ -120,8 +120,6 @@ def hook():
                     intractive_type = message_response.get("type")
                     message_id = message_response[intractive_type]["id"]
 
-                    if message_id == "infogeneral":
-                        print("nothing")
                     elif message_id == "ayudacompra":
                         button_ayudacompra={
                             "header": "Ayuda proceso de compra",
@@ -131,9 +129,9 @@ def hook():
                                 "button": "Lista de Opciones",
                                 "sections": [
                                     {
-                                        "title": "Entrada no recibida",
+                                        "title": "Problemas entradas",
                                         "rows": [
-                                            {"id": "infogeneral_nollegaentrada", "title": ""},
+                                            {"id": "infogeneral_nollegaentrada", "title": "", "description": ""},
                                             {
                                                 "id": "infogeneral_cargoduplicado",
                                                 "title": "Cargo duplicado",
