@@ -74,24 +74,24 @@ def hook():
                                     {
                                         "title": "Información general",
                                         "rows": [
-                                            {"id": "row 10", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
+                                            {"id": "infogeneral", "title": "Info general de tickets", "description": "Información general sobre la venta de tickets."},
                                             {
-                                                "id": "row 11",
+                                                "id": "ayudacompra",
                                                 "title": "Ayuda proceso de compra",
                                                 "description": "Tickets no recibidos, cargos duplicados, etc ...",
                                             },
                                             {
-                                                "id": "row 12",
+                                                "id": "lineup",
                                                 "title": "Line Up",
                                                 "description": "Line Up actualizado con todos los artistas.",
                                             },
                                             {
-                                                "id": "row 13",
-                                                "title": "Localización y mapas",
-                                                "description": "Mapa completo y localización del festival.",
+                                                "id": "geoyparking",
+                                                "title": "Localización y aparcamiento",
+                                                "description": "Localización del festival y aparcamientos.",
                                             },
                                             {
-                                                "id": "row 14",
+                                                "id": "mapafesti",
                                                 "title": "Mapa del festival",
                                                 "description": "Mapa completo por zonas del festival.",
                                             }
@@ -101,9 +101,9 @@ def hook():
                                     {
                                         "title": "Llegar al festival",
                                         "rows": [
-                                            {"id": "row 16", "title": "Taxis", "description": "Información sobre taxis y transporte similar"},
+                                            {"id": "taxis", "title": "Taxi", "description": "Información sobre taxis y transporte similar"},
                                             {
-                                                "id": "row 17",
+                                                "id": "autobus",
                                                 "title": "Autobús",
                                                 "description": "Lista y mapa con las líneas de transporte público de la ciudad.",
                                             }
@@ -119,6 +119,39 @@ def hook():
                     message_response = messenger.get_interactive_response(data)
                     intractive_type = message_response.get("type")
                     message_id = message_response[intractive_type]["id"]
+
+                    if message_id == "infogeneral":
+                        print("nothing")
+                    elif message_id == "ayudacompra":
+                        button_ayudacompra={
+                            "header": "Ayuda proceso de compra",
+                            "body": "Elige una de las siguientes opciones",
+                            "footer": "WakeUp & Dream - EventBot",
+                            "action": {
+                                "button": "Lista de Opciones",
+                                "sections": [
+                                    {
+                                        "title": "No me ha llegado la entrada",
+                                        "rows": [
+                                            {"id": "infogeneral_nollegaentrada", "title": ""},
+                                            {
+                                                "id": "infogeneral_cargoduplicado",
+                                                "title": "Tengo un cargo duplicado",
+                                                "description": "",
+                                            },
+                                            {
+                                                "id": "infogeneral_cargoduplicado_otros",
+                                                "title": "Otros problemas",
+                                                "description": "",
+                                            }
+                                        
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    messenger.send_button(button_ayudacompra,mobile)
+
                     message_text = message_response[intractive_type]["title"]
                     logging.info(f"Interactive Message; {message_id}: {message_text}")
 
