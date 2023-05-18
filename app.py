@@ -108,18 +108,6 @@ def hook():
                                             },
                                            
                                         ]
-                                    },
-                                    {
-                                        "title": "Otras preguntas frecuentes",
-                                        "rows": [
-                                            {"id": "row 7", "title": "Normas de acceso", "description": "¿Puedo acceder con bebida o comida al recinto?, ¿Tengo que ser mayor de 18 años?, ¿Qué pasa si pierdo mi entrada durante el festival?, etc ..."},
-                                            {
-                                                "id": "row 8",
-                                                "title": "Alojamiento",
-                                                "description": "¿Contáis con camping o glamping?, ¿Qué sitios son buenos para alojarse cerca del evento?, etc ...",
-                                            },
-                                           
-                                        ]
                                     }
                                 ]
                             }
