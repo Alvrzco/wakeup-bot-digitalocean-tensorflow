@@ -75,6 +75,7 @@ def hook():
                     if 'conversation' in changes:
 
                         conversation_id = changes['statuses'][0]['conversation']['id']
+                        print(f"conversation id: {conversation_id}")
                         phone_tup = (mobile,)
                         try:
                                 connection = mysql.connector.connect(host='cerobyte.com',
