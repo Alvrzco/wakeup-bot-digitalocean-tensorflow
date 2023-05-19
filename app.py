@@ -117,6 +117,7 @@ def hook():
 
                     ####################################################### AYUDA COMPRA ######################################################################
                     elif message_id == "ayudacompra":
+                        messenger.send_message("gola",mobile)
                         #Enviar mensaje template ayuda compra.
                         messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
                         button_ayudacompra={
