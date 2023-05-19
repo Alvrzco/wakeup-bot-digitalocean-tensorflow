@@ -385,6 +385,8 @@ def hook():
                     print(f"Message : {delivery}")
                 else:
                     print("No new message")
+        else:
+            print("MENSAJE ENVIADO POR LA EMPRESA")
         return "ok"
 
 def volveralmenuprincipal(mobile):
