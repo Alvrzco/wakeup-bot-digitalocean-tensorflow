@@ -332,6 +332,7 @@ def hook():
 
     print(f"CAMBIOS {changes}")
     if 'statuses' in changes:
+        mobile = messenger.get_mobile(data)
         print("hola")
         conversation_id = changes['statuses'][0]['conversation']['id']
         print(f"conversation id: {conversation_id}")
