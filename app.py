@@ -99,7 +99,7 @@ def hook():
                                             WHERE phone = {mobile}
                                     ''')
 
-                                    conn.commit()
+                                    connection.commit()
                                     messenger.send_message(f'''¡Hola, {name}!,
     Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
     Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
@@ -113,7 +113,7 @@ def hook():
                                     sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
                                     val = (mobile, conversation_id)
                                     cursor.execute(sql,val)
-                                    conn.commit()
+                                    connection.commit()
                                     messenger.send_message(f'''¡Hola, {name}!,
     Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
     Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
@@ -149,7 +149,7 @@ def hook():
                                         sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
                                         val = (mobile,)
                                         cursor.execute(sql,val)
-                                        conn.commit()
+                                        connection.commit()
                                         messenger.send_message(f'''¡Hola, {name}!,
     Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
     Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
