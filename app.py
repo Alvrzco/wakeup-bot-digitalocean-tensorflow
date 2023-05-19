@@ -467,7 +467,7 @@ def menuprincipal(mobile):
                         }
     messenger.send_button(button,mobile)
 def checkprimeravezen24(mobile):
-    phone_tup = (str(mobile),)
+    val_mobile = (str(mobile),)
     try:
         connection = mysql.connector.connect(host='cerobyte.com',
                                                      database='wakeup_and_dream_bot',
