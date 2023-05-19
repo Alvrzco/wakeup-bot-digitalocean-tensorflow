@@ -365,7 +365,7 @@ def hook():
                         cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
 
                         connection.commit()
-                        messenger.send_message(f'''¡Hola, {name}!,
+                        messenger.send_message(f'''¡Hola,!,
         Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
         Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
 
@@ -379,7 +379,7 @@ def hook():
                         val = (mobile, conversation_id)
                         cursor.execute(sql,val)
                         connection.commit()
-                        messenger.send_message(f'''¡Hola, {name}!,
+                        messenger.send_message(f'''¡Hola, !,
         Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
         Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
 
