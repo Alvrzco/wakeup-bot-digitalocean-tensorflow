@@ -333,7 +333,8 @@ def hook():
     print(f"{data}")
     if 'statuses' in changes:
         mobile = ['statuses'][0]
-        print(f"{mobile}")
+        print(f"MOBILE {mobile}")
+        print(f"STAUTES: {statuses}")
         if mobile != None:
             mobile = messenger.get_mobile(data)
             print("hola")
