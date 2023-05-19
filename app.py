@@ -51,8 +51,8 @@ def hook():
     data = request.get_json()
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
-    changes = data['entry'][0]['changes'][0]['value']['statuses'][0]
-    print(changes)
+    changes = data['entry'][0]['changes'][0]['value']
+    
     
     if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "messages":
@@ -74,7 +74,7 @@ def hook():
                     print(changes)
                     if 'conversation' in changes:
 
-                        conversation_id = changes['conversation']['id']
+                        conversation_id = changes['statuses'][0]['conversation']['id']
                         phone_tup = (mobile,)
                         try:
                                 connection = mysql.connector.connect(host='cerobyte.com',
