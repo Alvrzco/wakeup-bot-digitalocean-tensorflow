@@ -144,6 +144,7 @@ def hook():
 
                                  # get all records
                                 records = cursor.fetchall()
+                                print(records)
                                 if not len(records):
                                         sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
                                         val = (mobile,)
