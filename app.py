@@ -333,7 +333,7 @@ def hook():
                     print("No new message")
 
     if 'statuses' in changes:
-        #mobile = changes['statuses'][0]['recipient_id']
+        mobile = changes['statuses'][0]['recipient_id']
        
         #print(f"STAUTES: {statuses}")
         print({mobile})
