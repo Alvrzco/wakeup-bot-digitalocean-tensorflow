@@ -49,7 +49,7 @@ def hook():
     data = request.get_json()
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
-    conversation_id = data['entry'][0];
+    conversation_id = data['entry'][0]['changes'][0]['conversation']['id'];
     
     if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "messages":
@@ -67,7 +67,7 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
-                    '''                 
+                                     
                     phone_tup = (mobile,)
                     try:
                             connection = mysql.connector.connect(host='cerobyte.com',
@@ -83,24 +83,45 @@ def hook():
                             records = cursor.fetchall()
 
 
-                            for row in records:
-                                if row[2] != 
-
-                            #Si no hay registros, añadimos el número de teléfono
-                            if not len(records):
-                                texto_cajas_pelicano += "Reservados: 0"
                             
-                            messenger.send_message(texto_cajas_pelicano,mobile)
-                            
-                        except Exception as err:
-                            messenger.send_message(str(err),mobile)
-                            '''
+                            if records[0][2] != conversation_id:
+                                #update y enviar mensaje nuevo
+                                cursor = conn.cursor()
+                                cursor.execute('''
+                                        UPDATE wakeup_bot
+                                        SET last_conver = {conversation_id}
+                                        WHERE phone = {mobile}
+                                ''')
 
-                    messenger.send_message(f'''¡Hola, {name}!,
+                                conn.commit()
+                                messenger.send_message(f'''¡Hola, {name}!,
 Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
 Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
 
 Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+
+
+                            #Si no hay registros, añadimos el número de teléfono y el id de la conversación
+                            elif not len(records):
+                                #insertar y enviar mensaje nuevo
+                                sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
+                                val = (mobile, conversation_id)
+                                cursor.execute(sql,val)
+                                conn.commit()
+                                messenger.send_message(f'''¡Hola, {name}!,
+Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
+Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
+
+Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+
+                            elif records[0][2] == conversation_id:
+                                messenger.send_message("Ya le has escrito al bot",mobile)
+
+                    except Exception as err:
+                        messenger.send_message(str(err),mobile)
+                            
+
+                    
                     menuprincipal(mobile)
 
                 elif message_type == "interactive":
