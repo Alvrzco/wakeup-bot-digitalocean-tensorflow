@@ -359,7 +359,7 @@ def hook():
 
                     if checkprimeravezen24(mobile) == False:
                         print(f"ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO{records[0]}")            
-                        if records[0] != conversation_id:
+                        if records[0][0] != conversation_id:
                             #Ya ha entrado pero la conversación no es la misma
                             tup = (conversation_id,mobile)
                             mobile_tup = (mobile,)
