@@ -127,6 +127,31 @@ def hook():
                         
                         menuprincipal(mobile)
 
+                    else:
+                        try:
+                                connection = mysql.connector.connect(host='cerobyte.com',
+                                                 database='wakeup_and_dream_bot',
+                                                 user='wakeup_and_dream_bot',
+                                                 password='Sck85#97q')
+
+                                query_user = "SELECT lastconver from wakeup_bot where phone = %s"
+                                cursor = connection.cursor()
+                                consulta = cursor.execute(query_user, phone_tup)
+
+                                 # get all records
+                                records = cursor.fetchall()
+                                sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
+                                val = (mobile, conversation_id)
+                                cursor.execute(sql,val)
+                                conn.commit()
+                                messenger.send_message(f'''¡Hola, {name}!,
+    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
+    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
+
+    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+                        except Exception as err:
+                            messenger.send_message(str(err),mobile)
+
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
                     intractive_type = message_response.get("type")
