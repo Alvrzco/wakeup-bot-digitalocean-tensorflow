@@ -117,7 +117,7 @@ def hook():
 
                     ####################################################### AYUDA COMPRA ######################################################################
                     elif message_id == "ayudacompra":
-                        messenger.send_message("gola",mobile)
+                       
                         #Enviar mensaje template ayuda compra.
                         messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
                         button_ayudacompra={
@@ -150,6 +150,7 @@ def hook():
                         messenger.send_button(button_ayudacompra,mobile)
 
                     elif message_id == "infogeneral_nollegaentrada":
+                         messenger.send_message("gola",mobile)
                         messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
                         #messenger.send_message(f"Los *tickets* son gestionados directamente por la *plataforma online de venta* 🎟. Te enviamos un email y un número de teléfono para que te puedas poner en contacto con ellos y recuperar los tuyos 😊", mobile)
                         messenger.send_message(f"info@ayudaeventos.com",mobile)
