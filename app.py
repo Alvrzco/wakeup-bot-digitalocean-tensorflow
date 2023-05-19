@@ -72,7 +72,7 @@ def hook():
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
                     if 'conversation' in changes:
-
+                        messenger.send_message('HAY CONVER',mobile);
                         conversation_id = changes['conversation']['id']
                         phone_tup = (mobile,)
                         try:
@@ -150,11 +150,7 @@ def hook():
                                         val = (mobile,)
                                         cursor.execute(sql,val)
                                         connection.commit()
-                                        messenger.send_message(f'''¡Hola, {name}!,
-    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
-    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
-
-    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+                                        messenger.send_message(f'''¡Hola, {name}!,''',mobile)
                         except Exception as err:
                             messenger.send_message(str(err),mobile)
 
