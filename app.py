@@ -72,7 +72,7 @@ def hook():
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
-                    print(f"CAMBIOS {changes}")
+                    
                     
                     #no trae campo CONVERSATION - MENSAJE ENVIADO POR EL USUARIO
                     
@@ -90,7 +90,7 @@ def hook():
 
                         # get all records
                         records = cursor.fetchall()
-                        print(records)
+                       
                         if not len(records):
                                 sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
                                 val = (mobile,)
@@ -333,14 +333,14 @@ def hook():
     print(f"{data}")
     if 'statuses' in changes:
         mobile = changes['statuses'][0]['recipient_id']
-        print(f"MOBILasdasEs {mobile}")
+       
         #print(f"STAUTES: {statuses}")
         
         if mobile != None:
             #mobile = messenger.get_mobile(data)
-            print("hola")
+           
             conversation_id = changes['statuses'][0]['conversation']['id']
-            print(f"conversation id: {conversation_id}")
+           
             phone_tup = (str(mobile),)
             try:
                     connection = mysql.connector.connect(host='cerobyte.com',
@@ -485,7 +485,6 @@ def checkprimeravezen24(mobile):
 
         # get all records
         records = cursor.fetchall()
-        print(f"DEVUELVE FUNC AUX{records[0]}")
         if records[0][0] == 1:
             return True
         else:
