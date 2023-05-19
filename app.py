@@ -64,6 +64,7 @@ def hook():
                 logging.info(
                     f"New Message; sender:{mobile} name:{name} type:{message_type}"
                 )
+                print(f"CAMBIOS {changes}")
                 if message_type == "text":
                     message = messenger.get_message(data)
                     name = messenger.get_name(data)
