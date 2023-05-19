@@ -330,6 +330,7 @@ def hook():
                 else:
                     print("No new message")
 
+    print(f"CAMBIOS {changes}")
     if 'conversation' in changes:
         print("hola")
         conversation_id = changes['statuses'][0]['conversation']['id']
