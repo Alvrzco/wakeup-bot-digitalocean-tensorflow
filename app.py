@@ -372,7 +372,7 @@ def hook():
                             connection.commit()
                             messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
                             #menuprincipal(mobile)         
-                        elif records[0][0] != conversation_id:
+                        elif records[0] != conversation_id:
                             #Ya ha entrado pero la conversación no es la misma
                             tup = (conversation_id,mobile)
                             mobile_tup = (mobile,)
@@ -389,7 +389,7 @@ def hook():
 
                         
                         #frases aleatorias
-                    elif records[0][0] == conversation_id:
+                    elif records[0] == conversation_id:
                         return "ok"
 
             except Exception as err:
