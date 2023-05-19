@@ -70,7 +70,7 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
-
+                    #MENSAJE ENVIADO POR LA EMPRESA
                     if 'conversation' in changes:
                         conversation_id = changes['conversation']['id']
                         phone_tup = (mobile,)
@@ -130,6 +130,7 @@ def hook():
                         menuprincipal(mobile)
 
                     else:
+                        phone_tup = (mobile,)
                         try:
                                 connection = mysql.connector.connect(host='cerobyte.com',
                                                  database='wakeup_and_dream_bot',
