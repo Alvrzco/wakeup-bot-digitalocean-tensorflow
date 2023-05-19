@@ -395,7 +395,7 @@ def hook():
                             cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
 
             except Exception as err:
-                print("ERROR")
+                print(err)
                                     
                             
             
@@ -494,7 +494,7 @@ def checkprimeravezen24(mobile):
             return False
 
     except Exception as err:
-        print("error")
+        print(err)
 
 def enviarcontacto_eata(mobile):
     try:
