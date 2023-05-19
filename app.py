@@ -94,7 +94,7 @@ def hook():
                         if not len(records):
                                 sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
                                 val = (mobile,)
-                                cursor.execute(sql,val)
+                                #cursor.execute(sql,val)
                                 connection.commit()
                                 messenger.send_message(f'''¡Hola, {name}!,''',mobile)
                     except Exception as err:
