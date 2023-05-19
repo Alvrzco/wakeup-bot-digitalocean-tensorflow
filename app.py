@@ -387,10 +387,7 @@ def hook():
 
                         
                         #frases aleatorias
-                    elif records[0][0] == conversation_id:
-                        val_mobile = (mobile,)
-                        #messenger.send_message("Ya le has escrito al bot",mobile)
-                        cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
+                    
 
             except Exception as err:
                 print(err)
