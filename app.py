@@ -330,7 +330,7 @@ def hook():
                 else:
                     print("No new message")
 
-    print(f"CAMBIOS {changes}")
+    print(f"{data}")
     if 'statuses' in changes:
         mobile = messenger.get_mobile(data)
         print("hola")
