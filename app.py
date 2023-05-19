@@ -80,27 +80,28 @@ def hook():
                     
 
                     phone_tup = (mobile,)
-                    try:
-                        connection = mysql.connector.connect(host='cerobyte.com',
+                    if checkprimeravezen24 == True:
+                        try:
+                            connection = mysql.connector.connect(host='cerobyte.com',
                                                  database='wakeup_and_dream_bot',
                                                  user='wakeup_and_dream_bot',
                                                  password='Sck85#97q')
 
-                        query_user = "SELECT * from wakeup_bot where phone = %s"
-                        cursor = connection.cursor()
-                        consulta = cursor.execute(query_user, phone_tup)
+                            query_user = "SELECT * from wakeup_bot where phone = %s"
+                            cursor = connection.cursor()
+                            consulta = cursor.execute(query_user, phone_tup)
 
-                        # get all records
-                        records = cursor.fetchall()
+                            # get all records
+                            records = cursor.fetchall()
                        
-                        if not len(records):
-                                sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
-                                val = (mobile,)
-                                cursor.execute(sql,val)
-                                connection.commit()
-                                messenger.send_message(f'''¡Hola, {name}!,''',mobile)
-                    except Exception as err:
-                        messenger.send_message(str(err),mobile)
+                            if not len(records):
+                                    sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
+                                    val = (mobile,)
+                                    cursor.execute(sql,val)
+                                    connection.commit()
+                                    messenger.send_message(f'''¡Hola, {name}!,''',mobile)
+                        except Exception as err:
+                            messenger.send_message(str(err),mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
