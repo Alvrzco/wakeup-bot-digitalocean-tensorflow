@@ -350,7 +350,7 @@ def hook():
                                                      user='wakeup_and_dream_bot',
                                                      password='Sck85#97q')
 
-                    query_user = "SELECT last_conver from wakeup_bot where phone = %s"
+                    query_user = "SELECT count(*) from wakeup_bot where phone = %s"
                     cursor = connection.cursor()
                     consulta = cursor.execute(query_user, phone_tup)
 
