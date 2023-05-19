@@ -357,7 +357,8 @@ def hook():
                     
 
 
-                    if checkprimeravezen24(mobile) == False:               
+                    if checkprimeravezen24(mobile) == False:
+                        print(f"DEVUELVE{checkprimeravezen24(mobile)}")            
                         if records[0] != conversation_id:
                             tup = (conversation_id,mobile)
                             mobile_tup = (mobile,)
