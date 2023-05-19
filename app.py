@@ -66,6 +66,7 @@ def hook():
                     f"New Message; sender:{mobile} name:{name} type:{message_type}"
                 )
                 if message_type == "text":
+
                     message = messenger.get_message(data)
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
@@ -100,6 +101,10 @@ def hook():
                                 messenger.send_message(f'''¡Hola, {name}!,''',mobile)
                     except Exception as err:
                         messenger.send_message(str(err),mobile)
+
+                    if checkprimeravezen24(mobile) == True:
+                        messenger.send_message(f"Elige una de las opciones del menú",mobile)
+                        menuprincipal(mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
