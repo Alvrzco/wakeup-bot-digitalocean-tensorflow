@@ -332,7 +332,7 @@ def hook():
 
     print(f"{data}")
     if 'statuses' in changes:
-        mobile = changes['statuses'][0]['recipient_id']
+        #mobile = changes['statuses'][0]['recipient_id']
         print(f"MOBILasdasEs {mobile}")
         #print(f"STAUTES: {statuses}")
         
@@ -362,7 +362,7 @@ def hook():
                         #Si no hay registros, añadimos el número de teléfono y el id de la conversación
                         #Primera vez que entra DESDE SIEMPRE
                         if not len(records):
-                            
+
                             #insertar y enviar mensaje nuevo
                             sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
                             val = (mobile, conversation_id,1)
