@@ -332,7 +332,7 @@ def hook():
 
     print(f"{data}")
     if 'statuses' in changes:
-        mobile = ['statuses']
+        mobile = changes['statuses'][0]
         print(f"MOBILE {mobile}")
         #print(f"STAUTES: {statuses}")
         if mobile != None:
