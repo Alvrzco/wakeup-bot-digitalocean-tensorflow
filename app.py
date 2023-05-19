@@ -49,7 +49,7 @@ def hook():
     data = request.get_json()
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
-
+    messenger.send_message(str(changed_field),'34662555511')
     if (data['entry'][0]['changes'][0]['value']['statuses']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "statuses":
             messenger.send_message(str(data),'34662555511')
