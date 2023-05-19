@@ -52,7 +52,7 @@ def hook():
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
     changes = data['entry'][0]['changes'][0]
-
+    print(changes)
     
     if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "messages":
