@@ -358,8 +358,20 @@ def hook():
 
 
                     if checkprimeravezen24(mobile) == False:
-                        print(f"ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO{records[0]}")            
-                        if records[0][0] != conversation_id:
+                        print(f"ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO{records[0]}")
+                        #Si no hay registros, añadimos el número de teléfono y el id de la conversación
+                        #Primera vez que entra DESDE SIEMPRE
+                        if not len(records):
+                            #insertar y enviar mensaje nuevo
+                            sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
+                            val = (mobile, conversation_id)
+                            val_mobile = (mobile,)
+                            cursor.execute(sql,val)
+                            cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
+                            connection.commit()
+                            messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
+                            menuprincipal(mobile)         
+                        elif records[0][0] != conversation_id:
                             #Ya ha entrado pero la conversación no es la misma
                             tup = (conversation_id,mobile)
                             mobile_tup = (mobile,)
@@ -374,18 +386,7 @@ def hook():
                             menuprincipal(mobile)
                             
 
-                        #Si no hay registros, añadimos el número de teléfono y el id de la conversación
-                        #Primera vez que entra DESDE SIEMPRE
-                        elif not len(records):
-                            #insertar y enviar mensaje nuevo
-                            sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
-                            val = (mobile, conversation_id)
-                            val_mobile = (mobile,)
-                            cursor.execute(sql,val)
-                            cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
-                            connection.commit()
-                            messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
-                            menuprincipal(mobile)
+                        
                         #frases aleatorias
                     elif records[0] == conversation_id:
                         val_mobile = (mobile,)
