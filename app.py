@@ -383,11 +383,7 @@ def hook():
                             cursor.execute(sql,val)
                             cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
                             connection.commit()
-                            messenger.send_message(f'''¡Hola, !,
-        Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
-        Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
-
-        Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+                           
 
                         elif records[0] == conversation_id:
                             val_mobile = (mobile,)
