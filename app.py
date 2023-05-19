@@ -127,20 +127,20 @@ def hook():
                         
                         menuprincipal(mobile)
 
-                    elif message_type == "interactive":
-                        message_response = messenger.get_interactive_response(data)
-                        intractive_type = message_response.get("type")
-                        message_id = message_response[intractive_type]["id"]
+                elif message_type == "interactive":
+                    message_response = messenger.get_interactive_response(data)
+                    intractive_type = message_response.get("type")
+                    message_id = message_response[intractive_type]["id"]
 
-                        #volver al menú principal
-                        if message_id == "menu_si":
-                            menuprincipal(mobile)
+                    #volver al menú principal
+                    if message_id == "menu_si":
+                        menuprincipal(mobile)
 
-                        ####################################################### AYUDA COMPRA ######################################################################
-                        elif message_id == "ayudacompra":
-                            #Enviar mensaje template ayuda compra.
-                            #messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
-                            button_ayudacompra={
+                    ####################################################### AYUDA COMPRA ######################################################################
+                    elif message_id == "ayudacompra":
+                        #Enviar mensaje template ayuda compra.
+                        #messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
+                        button_ayudacompra={
                                 "header": "Ayuda proceso de compra",
                                 "body": "Elige una de las siguientes opciones",
                                 "footer": "WakeUp & Dream - EventBot",
@@ -166,35 +166,35 @@ def hook():
                                         }
                                     ]
                                 }
-                            }
-                            messenger.send_button(button_ayudacompra,mobile)
+                        }
+                        messenger.send_button(button_ayudacompra,mobile)
 
-                        elif message_id == "infogeneral_nollegaentrada":
-                            #messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
-                            messenger.send_message(f"Los *tickets* son gestionados directamente por la *plataforma online de venta* 🎟. Te enviamos un email y un número de teléfono para que te puedas poner en contacto con ellos y recuperar los tuyos 😊", mobile)
-                            messenger.send_message(f"info@ayudaeventos.com",mobile)
-                            enviarcontacto_eata(mobile)
-                            volveralmenuprincipal(mobile)
+                    elif message_id == "infogeneral_nollegaentrada":
+                        #messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
+                        messenger.send_message(f"Los *tickets* son gestionados directamente por la *plataforma online de venta* 🎟. Te enviamos un email y un número de teléfono para que te puedas poner en contacto con ellos y recuperar los tuyos 😊", mobile)
+                        messenger.send_message(f"info@ayudaeventos.com",mobile)
+                        enviarcontacto_eata(mobile)
+                        volveralmenuprincipal(mobile)
 
-                        elif message_id == "infogeneral_cargoduplicado":
-                            #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
-                            messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
-                            enviarcontacto_eata(mobile)
-                            volveralmenuprincipal(mobile)
+                    elif message_id == "infogeneral_cargoduplicado":
+                        #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
+                        messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
+                        enviarcontacto_eata(mobile)
+                        volveralmenuprincipal(mobile)
 
-                        elif message_id == "infogeneral_otros":
-                            #messenger.send_template("eventbot_ayudaotros", mobile, components=[], lang="es_ES")
-                            messenger.send_message('''*OTRAS DUDAS*
+                    elif message_id == "infogeneral_otros":
+                        #messenger.send_template("eventbot_ayudaotros", mobile, components=[], lang="es_ES")
+                        messenger.send_message('''*OTRAS DUDAS*
     Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
     https://instagram.com/wakeupand_dreamfestival
                             ''',mobile)
-                            volveralmenuprincipal(mobile)
+                        volveralmenuprincipal(mobile)
 
                         
                         ############################################################ LINEUP #####################################################################
-                        elif message_id == "lineup":
-                            messenger.send_image('https://i.ibb.co/58X961H/wakeupfest.jpg',mobile)
-                            button_reply={
+                    elif message_id == "lineup":
+                        messenger.send_image('https://i.ibb.co/58X961H/wakeupfest.jpg',mobile)
+                        button_reply={
                 "type": "button",
                 "body": {
                     "text": "¿Quieres que te envíe los perfiles de Instagram de lxs artistas?"
@@ -217,71 +217,71 @@ def hook():
                         }
                     ]
                 }
-          }
-                            messenger.send_reply_button(button_reply,mobile)
-                        elif message_id == "b1":
-                            messenger.send_message('''🔥*LINE UP* 🔥''',mobile)
-                            messenger.send_message(''' *14 DE JULIO* ''',mobile)
-                            messenger.send_message('''*CARL COX INVITES*
+        }
+                        messenger.send_reply_button(button_reply,mobile)
+                    elif message_id == "b1":
+                        messenger.send_message('''🔥*LINE UP* 🔥''',mobile)
+                        messenger.send_message(''' *14 DE JULIO* ''',mobile)
+                        messenger.send_message('''*CARL COX INVITES*
     https://instagram.com/carlcoxofficial''',mobile)
-                            messenger.send_message('''*ANDREA OLIVA*
+                        messenger.send_message('''*ANDREA OLIVA*
     https://instagram.com/andreaoliva1''',mobile)
-                            messenger.send_message('''*CHELINA MANUHUTU*
+                        messenger.send_message('''*CHELINA MANUHUTU*
     https://instagram.com/chelinamanuhutu''',mobile)
-                            messenger.send_message('''*FATIMA HAJJI*
+                        messenger.send_message('''*FATIMA HAJJI*
     https://instagram.com/fatimahajji''',mobile)
-                            messenger.send_message('''*SQUIRE*
+                        messenger.send_message('''*SQUIRE*
     https://instagram.com/squire.music''',mobile)
-                            messenger.send_message('''*SELLES*
+                        messenger.send_message('''*SELLES*
     https://instagram.com/selles.dj''',mobile)
-                            messenger.send_message('''*ANDRE V*''',mobile)
-                            messenger.send_message(''' *15 DE JULIO* ''',mobile)
-                            messenger.send_message('''*AMELIE LENS*
+                        messenger.send_message('''*ANDRE V*''',mobile)
+                        messenger.send_message(''' *15 DE JULIO* ''',mobile)
+                        messenger.send_message('''*AMELIE LENS*
     https://instagram.com/amelie_lens''',mobile)
-                            messenger.send_message('''*KLANGKUENSTLER*
+                        messenger.send_message('''*KLANGKUENSTLER*
     https://instagram.com/klangkuenstler''',mobile)
-                            messenger.send_message('''*BEN SIMS*
+                        messenger.send_message('''*BEN SIMS*
     https://instagram.com/bensimsofficial''',mobile)
-                            messenger.send_message('''*ANDRES CAMPO*
+                        messenger.send_message('''*ANDRES CAMPO*
     https://instagram.com/andrescampo''',mobile)
-                            messenger.send_message('''*GONÇALO B2B RAUL PACHECO*
+                        messenger.send_message('''*GONÇALO B2B RAUL PACHECO*
     https://instagram.com/goncalomusic
     https://instagramc.com/raulpacheco_''',mobile)
-                            messenger.send_message('''*JOYHAUSER*
+                        messenger.send_message('''*JOYHAUSER*
     https://instagram.com/joyhauser_ ''',mobile)
-                            messenger.send_message('''*MANU SANCHEZ*
+                        messenger.send_message('''*MANU SANCHEZ*
     https://instagram.com/manusanchez__''',mobile)
-                            volveralmenuprincipal(mobile)
-                        elif message_id == "b2":
-                            volveralmenuprincipal(mobile)
+                        volveralmenuprincipal(mobile)
+                    elif message_id == "b2":
+                        volveralmenuprincipal(mobile)
 
 
 
-                        ###########################################################################################################################################
+                    ###########################################################################################################################################
 
 
-                        message_text = message_response[intractive_type]["title"]
-                        logging.info(f"Interactive Message; {message_id}: {message_text}")
+                    message_text = message_response[intractive_type]["title"]
+                    logging.info(f"Interactive Message; {message_id}: {message_text}")
 
-                        #########################################################GEO Y PARKING#####################################################################
+                    #########################################################GEO Y PARKING#####################################################################
 
-                    elif message_id == "geoyparking":
-                        messenger.send_message(f'''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
+                elif message_id == "geoyparking":
+                    messenger.send_message(f'''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
     A pesar de ello, *RECOMENDAMOS* asistir al festival en *TRANSPORTE PÚBLICO* 🚌
     Si seleccionas esta opción más adelante, te enviaré al instante la ubicación exacta de la zona.''', mobile)
-                        volveralmenuprincipal(mobile)
+                    volveralmenuprincipal(mobile)
 
                         ############################################################ MAPA FESTI ####################################################################
 
-                    elif message_id == "mapafesti":
-                            messenger.send_message(f'''MAPA DEL FESTIVAL
+                elif message_id == "mapafesti":
+                        messenger.send_message(f'''MAPA DEL FESTIVAL
     Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
-                            volveralmenuprincipal(mobile)
+                        volveralmenuprincipal(mobile)
 
                         ###########################################################################################################################################
 
-                    elif message_id == "infogeneral":
-                        messenger.send_message(f'''VENTA DE TICKETS 🎟️
+                elif message_id == "infogeneral":
+                    messenger.send_message(f'''VENTA DE TICKETS 🎟️
 
     En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
 
@@ -294,69 +294,69 @@ def hook():
     - *ABONO GENERAL (50€ + G.D)* - *AGOTADO*
     - *ABONO GENERAL (55€ + G.D)* - *DISPONIBLES*
     ''', mobile)
-                        volveralmenuprincipal(mobile)
+                    volveralmenuprincipal(mobile)
 
-                    elif message_id == "taxi":
-                        messenger.send_message(f'''TAXI 🚕
+                elif message_id == "taxi":
+                    messenger.send_message(f'''TAXI 🚕
 
     - *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
     - *Servicio de Taxis Teletaxi - A Coruña* : +34 981 28 77 77''', mobile)
-                        volveralmenuprincipal(mobile)
+                    volveralmenuprincipal(mobile)
 
-                    elif message_id == "autobus":
-                        messenger.send_message(f'''LÍNEAS DE AUTOBÚS 🚌
+                elif message_id == "autobus":
+                    messenger.send_message(f'''LÍNEAS DE AUTOBÚS 🚌
 
     Más adeante subiremos aquí las líneas de autobús urbano para llegar al recinto''', mobile)
-                        volveralmenuprincipal(mobile)
-                        ############################################################ MAPA FESTI ####################################################################
+                    volveralmenuprincipal(mobile)
+                    ############################################################ MAPA FESTI ####################################################################
 
-                    elif message_type == "location":
-                        message_location = messenger.get_location(data)
-                        message_latitude = message_location["latitude"]
-                        message_longitude = message_location["longitude"]
-                        logging.info("Location: %s, %s", message_latitude, message_longitude)
+                elif message_type == "location":
+                    message_location = messenger.get_location(data)
+                    message_latitude = message_location["latitude"]
+                    message_longitude = message_location["longitude"]
+                    logging.info("Location: %s, %s", message_latitude, message_longitude)
 
-                    elif message_type == "image":
-                        image = messenger.get_image(data)
-                        image_id, mime_type = image["id"], image["mime_type"]
-                        image_url = messenger.query_media_url(image_id)
-                        image_filename = messenger.download_media(image_url, mime_type)
-                        print(f"{mobile} sent image {image_filename}")
-                        logging.info(f"{mobile} sent image {image_filename}")
+                elif message_type == "image":
+                    image = messenger.get_image(data)
+                    image_id, mime_type = image["id"], image["mime_type"]
+                    image_url = messenger.query_media_url(image_id)
+                    image_filename = messenger.download_media(image_url, mime_type)
+                    print(f"{mobile} sent image {image_filename}")
+                    logging.info(f"{mobile} sent image {image_filename}")
 
-                    elif message_type == "video":
-                        video = messenger.get_video(data)
-                        video_id, mime_type = video["id"], video["mime_type"]
-                        video_url = messenger.query_media_url(video_id)
-                        video_filename = messenger.download_media(video_url, mime_type)
-                        print(f"{mobile} sent video {video_filename}")
-                        logging.info(f"{mobile} sent video {video_filename}")
+                elif message_type == "video":
+                    video = messenger.get_video(data)
+                    video_id, mime_type = video["id"], video["mime_type"]
+                    video_url = messenger.query_media_url(video_id)
+                    video_filename = messenger.download_media(video_url, mime_type)
+                    print(f"{mobile} sent video {video_filename}")
+                    logging.info(f"{mobile} sent video {video_filename}")
 
-                    elif message_type == "audio":
-                        audio = messenger.get_audio(data)
-                        audio_id, mime_type = audio["id"], audio["mime_type"]
-                        audio_url = messenger.query_media_url(audio_id)
-                        audio_filename = messenger.download_media(audio_url, mime_type)
-                        print(f"{mobile} sent audio {audio_filename}")
-                        logging.info(f"{mobile} sent audio {audio_filename}")
+                elif message_type == "audio":
+                    audio = messenger.get_audio(data)
+                    audio_id, mime_type = audio["id"], audio["mime_type"]
+                    audio_url = messenger.query_media_url(audio_id)
+                    audio_filename = messenger.download_media(audio_url, mime_type)
+                    print(f"{mobile} sent audio {audio_filename}")
+                    logging.info(f"{mobile} sent audio {audio_filename}")
 
-                    elif message_type == "document":
-                        file = messenger.get_document(data)
-                        file_id, mime_type = file["id"], file["mime_type"]
-                        file_url = messenger.query_media_url(file_id)
-                        file_filename = messenger.download_media(file_url, mime_type)
-                        print(f"{mobile} sent file {file_filename}")
-                        logging.info(f"{mobile} sent file {file_filename}")
-                    else:
-                        print(f"{mobile} sent {message_type} ")
-                        print(data)
+                elif message_type == "document":
+                    file = messenger.get_document(data)
+                    file_id, mime_type = file["id"], file["mime_type"]
+                    file_url = messenger.query_media_url(file_id)
+                    file_filename = messenger.download_media(file_url, mime_type)
+                    print(f"{mobile} sent file {file_filename}")
+                    logging.info(f"{mobile} sent file {file_filename}")
                 else:
-                    delivery = messenger.get_delivery(data)
-                    if delivery:
-                        print(f"Message : {delivery}")
-                    else:
-                        print("No new message")
-    return "ok"
+                    print(f"{mobile} sent {message_type} ")
+                    print(data)
+            else:
+                delivery = messenger.get_delivery(data)
+                if delivery:
+                    print(f"Message : {delivery}")
+                else:
+                    print("No new message")
+        return "ok"
 
 def volveralmenuprincipal(mobile):
     button={
