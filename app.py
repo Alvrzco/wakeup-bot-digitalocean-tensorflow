@@ -354,7 +354,7 @@ def hook():
 
                         # get all records
                     records = cursor.fetchall()
-                    print(str(records[0]))
+                    
 
 
                     if checkprimeravezen24(mobile) == False:               
@@ -395,7 +395,7 @@ def hook():
                             cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
 
             except Exception as err:
-                messenger.send_message(str(err),mobile)
+                print("ERROR")
                                     
                             
             
