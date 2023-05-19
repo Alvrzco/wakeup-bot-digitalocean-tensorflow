@@ -335,7 +335,7 @@ def hook():
         mobile = changes['statuses'][0]['recipient_id']
         print(f"MOBILasdasEs {mobile}")
         #print(f"STAUTES: {statuses}")
-        checkprimeravezen24(mobile)
+        
         if mobile != None:
             #mobile = messenger.get_mobile(data)
             print("hola")
