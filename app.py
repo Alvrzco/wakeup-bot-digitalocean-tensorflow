@@ -362,33 +362,32 @@ def hook():
                     	if checkprimeravezen24(mobile) == False:
                         	#Si no hay registros, añadimos el número de teléfono y el id de la conversación
                         	#Primera vez que entra DESDE SIEMPRE
-                    		if not len(records):
-                            		#insertar y enviar mensaje nuevo
-                            		sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
-                            		val = (mobile, conversation_id,1)
-                            		cursor.execute(sql,val)
-                            		connection.commit()
-                            		messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
-                            	#menuprincipal(mobile)
-                       	elif records[0][0] != conversation_id:
-                            		#Ya ha entrado pero la conversación no es la misma
-                            		tup = (conversation_id,mobile)
-                            		mobile_tup = (mobile,)
-                            		#update y enviar mensaje nuevo
-                            		messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
-                            		cursor = connection.cursor()
-                            		cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
-                            		cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
-
-                            		connection.commit()
+                            if not len(records):
+                                #insertar y enviar mensaje nuevo
+                                sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
+                                val = (mobile, conversation_id,1)
+                                cursor.execute(sql,val)
+                                connection.commit()
+                                messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
+                            	    #menuprincipal(mobile)
+                            elif records[0][0] != conversation_id:
+                                #Ya ha entrado pero la conversación no es la misma
+                                tup = (conversation_id,mobile)
+                                mobile_tup = (mobile,)
+                                #update y enviar mensaje nuevo
+                                messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
+                                cursor = connection.cursor()
+                                cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
+                                cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
+                                connection.commit()
                             
-                            		#menuprincipal(mobile)
+                            	#menuprincipal(mobile)
                             
 
                         
                         		#frases aleatorias
-                    		elif records[0][0] == conversation_id:
-                        		return "ok"
+                            elif records[0][0] == conversation_id:
+                                return "ok"
 
             except Exception as err:
                 print(err)
