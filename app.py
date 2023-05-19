@@ -358,10 +358,11 @@ def hook():
 
 
                     if checkprimeravezen24(mobile) == False:
-                        print(f"ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO{records[0]}")
+                        
                         #Si no hay registros, añadimos el número de teléfono y el id de la conversación
                         #Primera vez que entra DESDE SIEMPRE
                         if not len(records):
+                            print(f"LENGTH {len(records)}")
                             #insertar y enviar mensaje nuevo
                             sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
                             val = (mobile, conversation_id,1)
