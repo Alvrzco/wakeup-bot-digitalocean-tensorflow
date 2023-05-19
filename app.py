@@ -53,7 +53,7 @@ def hook():
     changed_field = messenger.changed_field(data)
     changes = data['entry'][0]['changes'][0]['value']
     
-    
+    print(f"CAMBIOS {changes}")
     if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "messages":
             new_message = messenger.get_mobile(data)
