@@ -65,6 +65,11 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    messenger.send_message(f'''¡Hola, {name}!,
+Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
+Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
+
+Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
                     menuprincipal(mobile)
 
                 elif message_type == "interactive":
@@ -202,6 +207,47 @@ https://instagram.com/manusanchez__''',mobile)
 
                     message_text = message_response[intractive_type]["title"]
                     logging.info(f"Interactive Message; {message_id}: {message_text}")
+
+                    #########################################################GEO Y PARKING#####################################################################
+
+                elif message_id == "geoyparking":
+                    messenger.send_message(f'''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
+A pesar de ello, *RECOMENDAMOS* asistir al festival en *TRANSPORTE PÚBLICO* 🚌
+Si seleccionas esta opción más adelante, te enviaré al instante la ubicación exacta de la zona.''', mobile)
+                    volveralmenuprincipal(mobile)
+
+                    ############################################################ MAPA FESTI ####################################################################
+
+                elif message_id == "mapafesti":
+                        messenger.send_message(f'''MAPA DEL FESTIVAL
+Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
+                        volveralmenuprincipal(mobile)
+
+                    ###########################################################################################################################################
+
+                elif message_id == "infogeneral":
+                    messenger.send_message(f'''VENTA DE TICKETS 🎟️
+
+En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
+
+Puedes adquirir tus *tickets* 🎟️ aquí https://wakeupanddreamfestival.com/tickets/
+
+*TIRADAS*
+
+- *ABONO GENERAL (39€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (45€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (50€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (55€ + G.D)* - *DISPONIBLES*
+''', mobile)
+                    volveralmenuprincipal(mobile)
+
+                elif message_id == "taxi":
+                    messenger.send_message(f'''TAXI 🚕
+
+- *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
+- *Servicio de Taxis Teletaxi - A Coruña* : +34 981 28 77 77''', mobile)
+                    volveralmenuprincipal(mobile)
+                    ############################################################ MAPA FESTI ####################################################################
 
                 elif message_type == "location":
                     message_location = messenger.get_location(data)
