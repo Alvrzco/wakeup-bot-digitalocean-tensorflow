@@ -353,11 +353,12 @@ def hook():
 
                         # get all records
                     records = cursor.fetchall()
-                    print(str(records))
+                    print(str(records[0]))
 
 
                                     
                     if records[0] != conversation_id:
+                        print(f"ENTRA EN UPDATE")
                         #update y enviar mensaje nuevo
                         cursor = conn.cursor()
                         cursor.execute('''UPDATE wakeup_bot SET last_conver = {conversation_id} WHERE phone = {mobile}''')
