@@ -360,11 +360,12 @@ def hook():
                     if checkprimeravezen24(mobile) == False:               
                         if records[0] != conversation_id:
                             tup = (conversation_id,mobile)
+                            mobile_tup = (mobile,)
                             print(f"ENTRA EN UPDATE")
                             #update y enviar mensaje nuevo
                             cursor = connection.cursor()
                             cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
-                            cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''')
+                            cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
 
                             connection.commit()
                             messenger.send_message(f'''¡Hola,!,
