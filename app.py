@@ -73,89 +73,32 @@ def hook():
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
                     print(f"CAMBIOS {changes}")
-                    if 'conversation' in changes:
-
-                        conversation_id = changes['statuses'][0]['conversation']['id']
-                        print(f"conversation id: {conversation_id}")
-                        phone_tup = (mobile,)
-                        try:
-                                connection = mysql.connector.connect(host='cerobyte.com',
-                                                 database='wakeup_and_dream_bot',
-                                                 user='wakeup_and_dream_bot',
-                                                 password='Sck85#97q')
-
-                                query_user = "SELECT last_conver from wakeup_bot where phone = %s"
-                                cursor = connection.cursor()
-                                consulta = cursor.execute(query_user, phone_tup)
-
-                                 # get all records
-                                records = cursor.fetchall()
-
-
-                                
-                                if records[0][2] != conversation_id:
-                                    #update y enviar mensaje nuevo
-                                    cursor = conn.cursor()
-                                    cursor.execute('''
-                                            UPDATE wakeup_bot
-                                            SET last_conver = {conversation_id}
-                                            WHERE phone = {mobile}
-                                    ''')
-
-                                    connection.commit()
-                                    messenger.send_message(f'''¡Hola, {name}!,
-    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
-    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
-
-    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
-
-
-                                #Si no hay registros, añadimos el número de teléfono y el id de la conversación
-                                elif not len(records):
-                                    #insertar y enviar mensaje nuevo
-                                    sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
-                                    val = (mobile, conversation_id)
-                                    cursor.execute(sql,val)
-                                    connection.commit()
-                                    messenger.send_message(f'''¡Hola, {name}!,
-    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
-    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
-
-    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
-
-                                elif records[0][2] == conversation_id:
-                                    messenger.send_message("Ya le has escrito al bot",mobile)
-
-                        except Exception as err:
-                            messenger.send_message(str(err),mobile)
-                                
-
-                        
-                        menuprincipal(mobile)
+                    
                     #no trae campo CONVERSATION - MENSAJE ENVIADO POR EL USUARIO
-                    else:
-                        phone_tup = (mobile,)
-                        try:
-                                connection = mysql.connector.connect(host='cerobyte.com',
+                    
+
+                    phone_tup = (mobile,)
+                    try:
+                        connection = mysql.connector.connect(host='cerobyte.com',
                                                  database='wakeup_and_dream_bot',
                                                  user='wakeup_and_dream_bot',
                                                  password='Sck85#97q')
 
-                                query_user = "SELECT * from wakeup_bot where phone = %s"
-                                cursor = connection.cursor()
-                                consulta = cursor.execute(query_user, phone_tup)
+                        query_user = "SELECT * from wakeup_bot where phone = %s"
+                        cursor = connection.cursor()
+                        consulta = cursor.execute(query_user, phone_tup)
 
-                                 # get all records
-                                records = cursor.fetchall()
-                                print(records)
-                                if not len(records):
-                                        sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
-                                        val = (mobile,)
-                                        cursor.execute(sql,val)
-                                        connection.commit()
-                                        messenger.send_message(f'''¡Hola, {name}!,''',mobile)
-                        except Exception as err:
-                            messenger.send_message(str(err),mobile)
+                        # get all records
+                        records = cursor.fetchall()
+                        print(records)
+                        if not len(records):
+                                sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
+                                val = (mobile,)
+                                cursor.execute(sql,val)
+                                connection.commit()
+                                messenger.send_message(f'''¡Hola, {name}!,''',mobile)
+                    except Exception as err:
+                        messenger.send_message(str(err),mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
@@ -387,7 +330,63 @@ def hook():
                 else:
                     print("No new message")
 
-    print(f"CAMBIOS 57 {changes}")
+    if 'conversation' in changes:
+        conversation_id = changes['statuses'][0]['conversation']['id']
+        print(f"conversation id: {conversation_id}")
+        phone_tup = (mobile,)
+        try:
+                connection = mysql.connector.connect(host='cerobyte.com',
+                                                 database='wakeup_and_dream_bot',
+                                                 user='wakeup_and_dream_bot',
+                                                 password='Sck85#97q')
+
+                query_user = "SELECT last_conver from wakeup_bot where phone = %s"
+                cursor = connection.cursor()
+                consulta = cursor.execute(query_user, phone_tup)
+
+                    # get all records
+                records = cursor.fetchall()
+
+
+                                
+                if records[0][2] != conversation_id:
+                    #update y enviar mensaje nuevo
+                    cursor = conn.cursor()
+                    cursor.execute('''
+                            UPDATE wakeup_bot
+                            SET last_conver = {conversation_id}
+                            WHERE phone = {mobile}
+                    ''')
+
+                    connection.commit()
+                    messenger.send_message(f'''¡Hola, {name}!,
+    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
+    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
+
+    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+
+
+                #Si no hay registros, añadimos el número de teléfono y el id de la conversación
+                elif not len(records):
+                    #insertar y enviar mensaje nuevo
+                    sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
+                    val = (mobile, conversation_id)
+                    cursor.execute(sql,val)
+                    connection.commit()
+                    messenger.send_message(f'''¡Hola, {name}!,
+    Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
+    Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
+
+    Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
+
+                elif records[0][2] == conversation_id:
+                    messenger.send_message("Ya le has escrito al bot",mobile)
+
+        except Exception as err:
+            messenger.send_message(str(err),mobile)
+                                
+                        
+        menuprincipal(mobile)
             
     return "ok"
 
