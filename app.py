@@ -247,6 +247,12 @@ Puedes adquirir tus *tickets* 🎟️ aquí https://wakeupanddreamfestival.com/t
 - *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
 - *Servicio de Taxis Teletaxi - A Coruña* : +34 981 28 77 77''', mobile)
                     volveralmenuprincipal(mobile)
+
+                elif message_id == "autobus":
+                    messenger.send_message(f'''LÍNEAS DE AUTOBÚS 🚌
+
+Más adeante subiremos aquí las líneas de autobús urbano para llegar al recinto''', mobile)
+                    volveralmenuprincipal(mobile)
                     ############################################################ MAPA FESTI ####################################################################
 
                 elif message_type == "location":
