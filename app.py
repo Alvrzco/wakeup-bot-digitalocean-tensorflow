@@ -476,7 +476,7 @@ def checkprimeravezen24(mobile):
 
         query_user = "SELECT check24h from wakeup_bot where phone = %s"
         cursor = connection.cursor()
-        consulta = cursor.execute(query_user, mobile)
+        consulta = cursor.execute(query_user, val_mobile)
 
         # get all records
         records = cursor.fetchall()
