@@ -481,7 +481,7 @@ def checkprimeravezen24(mobile):
         # get all records
         records = cursor.fetchall()
         print(f"DEVUELVE FUNC AUX{records[0]}")
-        if records[0] == 1:
+        if records[0][0] == 1:
             return True
         else:
             return False
