@@ -347,7 +347,7 @@ def hook():
                 conversation_id = changes['statuses'][0]['conversation']['id']
             
                 phone_tup = (str(mobile),)
-                exit
+              
                 try:
                         connection = mysql.connector.connect(host='cerobyte.com',
                                                         database='wakeup_and_dream_bot',
