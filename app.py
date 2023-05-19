@@ -386,8 +386,9 @@ def hook():
                     print(f"Message : {delivery}")
                 else:
                     print("No new message")
-        else:
-            print(f"CAMBIOS 57 {changes}")
+
+    print(f"CAMBIOS 57 {changes}")
+            
     return "ok"
 
 def volveralmenuprincipal(mobile):
