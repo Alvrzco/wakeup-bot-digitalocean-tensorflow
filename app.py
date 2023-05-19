@@ -382,8 +382,7 @@ def hook():
                                 cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
                                 cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
                                 connection.commit()
-                            
-                            	#menuprincipal(mobile)
+                                menuprincipal(mobile)
                             
 
                         
