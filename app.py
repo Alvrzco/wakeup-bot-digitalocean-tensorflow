@@ -101,8 +101,13 @@ def hook():
                                 messenger.send_message(f'''¡Hola, {name}!''',mobile)
                     except Exception as err:
                         messenger.send_message(str(err),mobile)
-                    #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN
+                    #############################################################
+                    #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN#
+                    #############################################################
                     if checkprimeravezen24(mobile) == True:
+                        messenger.send_message('''*¡Ya queda menos!*⌚
+Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
+Si *tienes dudas* puedes seleccionar una opción del menú''',mobile)
                         messenger.send_message(f"Elige una de las opciones del menú",mobile)
                         menuprincipal(mobile)
 
