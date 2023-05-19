@@ -71,7 +71,7 @@ def hook():
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
-                    print(changes)
+                    print(f"CAMBIOS {changes}")
                     if 'conversation' in changes:
 
                         conversation_id = changes['statuses'][0]['conversation']['id']
