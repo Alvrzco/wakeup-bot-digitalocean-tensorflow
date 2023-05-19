@@ -70,7 +70,9 @@ def hook():
                     name = messenger.get_name(data)
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
-                    #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    messenger.send_message(f"Selecciona una opción de la lista",mobile)
+                    menuprincipal(mobile)
+
                     #MENSAJE ENVIADO POR LA EMPRESA
                     
                     
