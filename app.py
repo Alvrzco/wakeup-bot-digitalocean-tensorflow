@@ -49,10 +49,12 @@ def hook():
     data = request.get_json()
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
-    if (data['entry'][0]['changes'][0]['value']['statuses']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
+    
+    if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
+        if changed_field == "statuses":
+            messenger.send_message(str(changed_field),mobile)
         if changed_field == "messages":
             new_message = messenger.get_mobile(data)
-
             if new_message:
                 mobile = messenger.get_mobile(data)
                 name = messenger.get_name(data)
@@ -66,7 +68,7 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
-                    #messenger.send_message(str(data['entry'][0]['changes'][0]),mobile)
+                    messenger.send_message(str(data['entry'][0]['changes'][0]),mobile)
                     messenger.send_message(f'''¡Hola, {name}!,
 Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
 Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
