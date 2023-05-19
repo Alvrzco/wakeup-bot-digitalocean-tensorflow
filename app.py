@@ -493,7 +493,7 @@ def checkprimeravezen24(mobile):
             return False
 
     except Exception as err:
-        messenger.send_message(str(err),mobile)
+        messenger.send_message(f"PUTO ERROR AQUI",mobile)
 
 def enviarcontacto_eata(mobile):
     try:
