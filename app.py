@@ -332,7 +332,7 @@ def hook():
 
     print(f"{data}")
     if 'statuses' in changes:
-        #mobile = changes['statuses'][0]['recipient_id']
+        mobile = changes['statuses'][0]['recipient_id']
         print(f"MOBILE {mobile}")
         #print(f"STAUTES: {statuses}")
         if mobile != None:
@@ -340,7 +340,7 @@ def hook():
             print("hola")
             conversation_id = changes['statuses'][0]['conversation']['id']
             print(f"conversation id: {conversation_id}")
-            phone_tup = (mobile,)
+            phone_tup = (str(mobile),)
             try:
                     connection = mysql.connector.connect(host='cerobyte.com',
                                                      database='wakeup_and_dream_bot',
@@ -360,11 +360,7 @@ def hook():
                     if records[0][2] != conversation_id:
                         #update y enviar mensaje nuevo
                         cursor = conn.cursor()
-                        cursor.execute('''
-                                UPDATE wakeup_bot
-                                SET last_conver = {conversation_id}
-                                WHERE phone = {mobile}
-                        ''')
+                        cursor.execute('''UPDATE wakeup_bot SET last_conver = {conversation_id} WHERE phone = {mobile}''')
 
                         connection.commit()
                         messenger.send_message(f'''¡Hola, {name}!,
