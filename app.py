@@ -72,6 +72,7 @@ def hook():
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
                     if 'conversation' in changes:
+
                         conversation_id = changes['conversation']['id']
                         phone_tup = (mobile,)
                         try:
@@ -128,7 +129,7 @@ def hook():
 
                         
                         menuprincipal(mobile)
-
+                    #no trae campo CONVERSATION - MENSAJE ENVIADO POR EL USUARIO
                     else:
                         phone_tup = (mobile,)
                         try:
@@ -137,17 +138,18 @@ def hook():
                                                  user='wakeup_and_dream_bot',
                                                  password='Sck85#97q')
 
-                                query_user = "SELECT last_conver from wakeup_bot where phone = %s"
+                                query_user = "SELECT count(*) from wakeup_bot where phone = %s"
                                 cursor = connection.cursor()
                                 consulta = cursor.execute(query_user, phone_tup)
 
                                  # get all records
                                 records = cursor.fetchall()
-                                sql = "INSERT INTO wakeup_bot (phone, last_conver) VALUES (%s,%s)"
-                                val = (mobile, conversation_id)
-                                cursor.execute(sql,val)
-                                conn.commit()
-                                messenger.send_message(f'''¡Hola, {name}!,
+                                if not len(records):
+                                        sql = "INSERT INTO wakeup_bot (phone) VALUES (%s)"
+                                        val = (mobile,)
+                                        cursor.execute(sql,val)
+                                        conn.commit()
+                                        messenger.send_message(f'''¡Hola, {name}!,
     Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
     Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
 
