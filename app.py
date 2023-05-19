@@ -366,13 +366,12 @@ def hook():
                             cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
                             cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''')
 
-                        connection.commit()
-                        messenger.send_message(f'''¡Hola,!,
+                            connection.commit()
+                            messenger.send_message(f'''¡Hola,!,
         Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
         Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
 
         Tendrás disponible siempre un *menú principal* desde el que podrás ver todas las funcionalidades que tengo.''', mobile)
-
 
                         #Si no hay registros, añadimos el número de teléfono y el id de la conversación
                         elif not len(records):
