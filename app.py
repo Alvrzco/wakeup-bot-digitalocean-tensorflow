@@ -80,7 +80,7 @@ def hook():
                     
 
                     phone_tup = (mobile,)
-                    if checkprimeravezen24 == True:
+                    if checkprimeravezen24(mobile) == True:
                         try:
                             connection = mysql.connector.connect(host='cerobyte.com',
                                                  database='wakeup_and_dream_bot',
