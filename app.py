@@ -49,6 +49,8 @@ def hook():
     data = request.get_json()
     logging.info("Received webhook data: %s", data)
     changed_field = messenger.changed_field(data)
+    conversation_id = data['entry'][0];
+    messenger.send_message(str(conversation_id),mobile)
     if (data['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']) == environ.get("PHONE_NUMBER_ID"):
         if changed_field == "messages":
             new_message = messenger.get_mobile(data)
@@ -65,6 +67,35 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    '''                 
+                    phone_tup = (mobile,)
+                    try:
+                            connection = mysql.connector.connect(host='cerobyte.com',
+                                             database='wakeup_and_dream_bot',
+                                             user='wakeup_and_dream_bot',
+                                             password='Sck85#97q')
+
+                            query_user = "SELECT lastconver from wakeup_bot where phone = %s"
+                            cursor = connection.cursor()
+                            consulta = cursor.execute(query_user, phone_tup)
+
+                             # get all records
+                            records = cursor.fetchall()
+
+
+                            for row in records:
+                                if row[2] != 
+
+                            #Si no hay registros, añadimos el número de teléfono
+                            if not len(records):
+                                texto_cajas_pelicano += "Reservados: 0"
+                            
+                            messenger.send_message(texto_cajas_pelicano,mobile)
+                            
+                        except Exception as err:
+                            messenger.send_message(str(err),mobile)
+                            '''
+
                     messenger.send_message(f'''¡Hola, {name}!,
 Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
 Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
