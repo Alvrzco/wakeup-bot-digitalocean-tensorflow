@@ -245,7 +245,7 @@ def hook():
                     #########################################################GEO Y PARKING#####################################################################
 
                 elif message_id == "geoyparking":
-                    messenger.send_message(f'''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
+                    messenger.send_message('''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
     A pesar de ello, *RECOMENDAMOS* asistir al festival en *TRANSPORTE PÚBLICO* 🚌
     Si seleccionas esta opción más adelante, te enviaré al instante la ubicación exacta de la zona.''', mobile)
                     volveralmenuprincipal(mobile)
@@ -253,14 +253,14 @@ def hook():
                         ############################################################ MAPA FESTI ####################################################################
 
                 elif message_id == "mapafesti":
-                        messenger.send_message(f'''MAPA DEL FESTIVAL
+                        messenger.send_message('''MAPA DEL FESTIVAL
     Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
                         volveralmenuprincipal(mobile)
 
                         ###########################################################################################################################################
 
                 elif message_id == "infogeneral":
-                    messenger.send_message(f'''VENTA DE TICKETS 🎟️
+                    messenger.send_message('''VENTA DE TICKETS 🎟️
 
     En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
 
