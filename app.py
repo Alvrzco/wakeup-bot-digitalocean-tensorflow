@@ -98,10 +98,10 @@ def hook():
                                 val = (mobile,)
                                 cursor.execute(sql,val)
                                 connection.commit()
-                                messenger.send_message(f'''¡Hola, {name}!,''',mobile)
+                                messenger.send_message(f'''¡Hola, {name}!''',mobile)
                     except Exception as err:
                         messenger.send_message(str(err),mobile)
-
+                    #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN
                     if checkprimeravezen24(mobile) == True:
                         messenger.send_message(f"Elige una de las opciones del menú",mobile)
                         menuprincipal(mobile)
@@ -118,7 +118,7 @@ def hook():
                     ####################################################### AYUDA COMPRA ######################################################################
                     elif message_id == "ayudacompra":
                         #Enviar mensaje template ayuda compra.
-                        #messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
+                        messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
                         button_ayudacompra={
                                 "header": "Ayuda proceso de compra",
                                 "body": "Elige una de las siguientes opciones",
@@ -149,15 +149,15 @@ def hook():
                         messenger.send_button(button_ayudacompra,mobile)
 
                     elif message_id == "infogeneral_nollegaentrada":
-                        #messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
-                        messenger.send_message(f"Los *tickets* son gestionados directamente por la *plataforma online de venta* 🎟. Te enviamos un email y un número de teléfono para que te puedas poner en contacto con ellos y recuperar los tuyos 😊", mobile)
+                        messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
+                        #messenger.send_message(f"Los *tickets* son gestionados directamente por la *plataforma online de venta* 🎟. Te enviamos un email y un número de teléfono para que te puedas poner en contacto con ellos y recuperar los tuyos 😊", mobile)
                         messenger.send_message(f"info@ayudaeventos.com",mobile)
                         enviarcontacto_eata(mobile)
                         volveralmenuprincipal(mobile)
 
                     elif message_id == "infogeneral_cargoduplicado":
-                        #messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
-                        messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
+                        messenger.send_template("eventbot_cargoduplicado", mobile, components=[], lang="es_ES")
+                        #messenger.send_message(f"*¡No te preocupes!* 👽 Esto es algo habitual en las pasarelas de pago online. Te enviamos un número de teléfono para que contactes con la plataforma de venta de tickets en horario laboral", mobile)
                         enviarcontacto_eata(mobile)
                         volveralmenuprincipal(mobile)
 
