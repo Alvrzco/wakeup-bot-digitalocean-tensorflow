@@ -331,6 +331,7 @@ def hook():
                     print("No new message")
 
     if 'conversation' in changes:
+        print("hola")
         conversation_id = changes['statuses'][0]['conversation']['id']
         print(f"conversation id: {conversation_id}")
         phone_tup = (mobile,)
