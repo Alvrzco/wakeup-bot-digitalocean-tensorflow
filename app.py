@@ -65,6 +65,7 @@ def hook():
                     logging.info("Message: %s", message)
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
+                    messenger.send_message(data['entry'][0]['changes'][1],mobile)
                     messenger.send_message(f'''¡Hola, {name}!,
 Soy *EventBot* 🤖 y seré tu asistente durante el *Wake Up & Dream*.
 Puedes preguntarte cualquier cosa aunque voy aprendiendo poco a poco de toda la gente que me escribe.
