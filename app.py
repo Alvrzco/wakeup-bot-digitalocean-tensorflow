@@ -386,10 +386,10 @@ def hook():
                             messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.")
                             menuprincipal(mobile)
                         #frases aleatorias
-                        elif records[0] == conversation_id:
-                            val_mobile = (mobile,)
-                            messenger.send_message("Ya le has escrito al bot",mobile)
-                            cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
+                    elif records[0] == conversation_id:
+                        val_mobile = (mobile,)
+                        messenger.send_message("Ya le has escrito al bot",mobile)
+                        cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',val_mobile)
 
             except Exception as err:
                 print(err)
