@@ -71,8 +71,9 @@ def hook():
                     #Imprimir menú principal y mensaje de bienvenida
                     #messenger.send_template("eventbot_presentation", mobile, components=[], lang="es_ES")
                     #MENSAJE ENVIADO POR LA EMPRESA
+                    messenger.send_message(str(changes),mobile);
                     if 'conversation' in changes:
-                        messenger.send_message('HAY CONVER',mobile);
+
                         conversation_id = changes['conversation']['id']
                         phone_tup = (mobile,)
                         try:
