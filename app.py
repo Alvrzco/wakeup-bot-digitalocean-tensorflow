@@ -485,6 +485,8 @@ def checkprimeravezen24(mobile):
 
         # get all records
         records = cursor.fetchall()
+        if not len(records):
+            return False
         if records[0][0] == 1:
             return True
         else:
