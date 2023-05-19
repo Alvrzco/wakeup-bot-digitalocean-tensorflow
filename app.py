@@ -388,7 +388,7 @@ def hook():
                         
                         #frases aleatorias
                     elif records[0][0] == conversation_id:
-                        return
+                        return "ok"
 
             except Exception as err:
                 print(err)
