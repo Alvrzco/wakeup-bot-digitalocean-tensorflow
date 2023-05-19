@@ -86,7 +86,7 @@ def hook():
                                                  user='wakeup_and_dream_bot',
                                                  password='Sck85#97q')
 
-                        query_user = "SELECT * from wakeup_bot where phone = %s"
+                        query_user = "SELECT count(*) from wakeup_bot where phone = %s"
                         cursor = connection.cursor()
                         consulta = cursor.execute(query_user, phone_tup)
 
@@ -370,7 +370,7 @@ def hook():
                                 val = (mobile, conversation_id,1)
                                 cursor.execute(sql,val)
                                 connection.commit()
-                                messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
+                                #messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
                             	    #menuprincipal(mobile)
                             elif records[0][0] != conversation_id:
                                 #Ya ha entrado pero la conversación no es la misma
