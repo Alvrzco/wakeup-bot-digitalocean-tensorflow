@@ -1,9 +1,11 @@
 import os
 import logging
 import json
+import mysql.connector
 from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request, make_response
+
 
 
 messenger = WhatsApp(environ.get("TOKEN"), phone_number_id=environ.get("PHONE_NUMBER_ID")) #this should be writen as 
