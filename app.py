@@ -122,7 +122,9 @@ def hook():
                     
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
-                        frases_aleatorias = chatbot_response(message)
+                        respuesta = chatbot_response(message)
+                        messenger.send_message(respuesta,mobile)
+
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
