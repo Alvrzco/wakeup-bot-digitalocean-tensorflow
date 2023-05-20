@@ -124,17 +124,18 @@ def hook():
                     if checkprimeravezen24(mobile) == True:
                         respuesta = chatbot_response(message)
                         mensajederespuesta = respuesta['res']
-                        ints = respuesta['ints'][0]['intent']
                         messenger.send_message(mensajederespuesta,mobile)
                         print(f"ESTOS SON LOS INTS {ints}",mobile)
-                        if ints == 'noanswer':
+                        if not 'ints' in respuesta:
                             volveralmenuprincipal(mobile)
-                        if ints == 'opciones':
-                            menuprincipal(mobile)
-                        if ints == 'dudas_compra_online':
-                            boton_ayuda_compra(mobile)
-                        if ints == 'ayudageneral':
-                            menuprincipal(mobile)
+                        else:
+                            ints = respuesta['ints']
+                            if ints == 'opciones':
+                                menuprincipal(mobile)
+                            if ints == 'dudas_compra_online':
+                                boton_ayuda_compra(mobile)
+                            if ints == 'ayudageneral':
+                                menuprincipal(mobile)
                         
 
 
@@ -661,11 +662,11 @@ def getResponse(ints, intents_json):
 def chatbot_response(msg):
     respuesta = dict();
     ints = predict_class(msg, model)
-    if not ints:
-        inst = "noanswer"
     res = getResponse(ints, intents)
     respuesta['res'] = res
-    respuesta['ints'] = ints
+    if ints:
+        respuesta['ints'] = ints['ints'][0]['intent']
+
     return respuesta
 
 
