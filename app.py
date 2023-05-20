@@ -373,7 +373,8 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                     print(f"Message : {delivery}")
                 else:
                     print("No new message")
-
+        if 'errors' in changes:
+            return "ok"
         if 'statuses' in changes:
             mobile = changes['statuses'][0]['recipient_id']
         
