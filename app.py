@@ -123,7 +123,7 @@ def hook():
                         prompt_helper = PromptHelper(max_input_size, num_output, max_chunk_overlap)
         
                         service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
-                        storage_context = StorageContext.from_defaults(persist_dir="storage") 
+                        storage_context = StorageContext.from_defaults(index_store="storage") 
                         index = load_index_from_storage(storage_context)
                         response = index.query(message)
                         messenger.send_message(response,mobile)
