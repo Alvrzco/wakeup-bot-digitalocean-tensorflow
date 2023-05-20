@@ -115,8 +115,15 @@ def hook():
                     #############################################################
                     
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
-                    if checkprimeravezen24(mobile) == True:  
-                        storage_context = StorageContext.from_defaults(persist_dir="/storage") 
+                    if checkprimeravezen24(mobile) == True:
+                        llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"))
+                        max_input_size = 4096
+                        num_output = 256
+                        max_chunk_overlap = 20
+                        prompt_helper = PromptHelper(max_input_size, num_output, max_chunk_overlap)
+        
+                        service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+                        storage_context = StorageContext.from_defaults(persist_dir="/storage", service_context = service_context) 
                         index = load_index_from_storage(storage_context)
                         response = index.query(message)
                         messenger.send_message(response,mobile)
