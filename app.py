@@ -107,7 +107,7 @@ def hook():
                     #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN#
                     #############################################################
                     fecha_festival = '2023/07/14'
-                    fecha_festival_d1 = datetime.strptime(fecha_festival, "%Y/%m/%d")
+                    fecha_festival_d1 = datetime.datetime.strptime(fecha_festival, "%Y/%m/%d")
                     present = datetime.datetime.now()
                     countdown = present - fecha_festival_d1
                     messenger.send_message(f"Quedan {countdown.days} días",mobile)
