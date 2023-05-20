@@ -9,7 +9,7 @@ from os import environ
 from flask import Flask, request, make_response
 import pickle
 import numpy as np
-from llama_index import LLMPredictor, GPTVectorStoreIndex, SimpleDirectoryReader,PromptHelper, ServiceContext, StorageContext, GPTVectorStoreIndex,load_index_from_storage
+from llama_index import LLMPredictor, GPTVectorStoreIndex, SimpleDirectoryReader,PromptHelper, ServiceContext, StorageContext, GPTVectorStoreIndex,load_index_from_storage, QuestionAnswerPrompt
 from langchain.chat_models import ChatOpenAI
 import os
 import config
@@ -116,6 +116,18 @@ def hook():
                     
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
+                        #https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_prompts.html
+
+                        query_str = message
+                        context_str = "Eres un asistente virtual destinado a ayudar a los clientes en un festival llevado a cabo en A Coruña el 14 y 15 de Julio de 2023"
+                        QA_PROMPT_TMPL = (
+                                "Proporcionamos información del contexto a continuación. \n"
+                                "---------------------\n"
+                                "{context_str}"
+                                "\n---------------------\n"
+                                "Dada esta información, por favor responde a la pregunta: {query_str}\n"
+                        )
+                        QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
                         llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"))
                         max_input_size = 4096
                         num_output = 256
@@ -125,7 +137,7 @@ def hook():
                         service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
                         storage_context = StorageContext.from_defaults(persist_dir="storage") 
                         index = load_index_from_storage(storage_context)
-                        query_engine = index.as_query_engine() 
+                        query_engine = index.as_query_engine(text_qa_template=QA_PROMPT) 
                         response = query_engine.query(message)
                         messenger.send_message(str(response),mobile)
                         menuprincipal(mobile)
