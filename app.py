@@ -191,7 +191,7 @@ Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
                         ###########################################################################################################################################
 
                     elif message_id == "infogeneral":
-                        messenger.send_message('''VENTA DE TICKETS 🎟️
+                        messenger.send_message('''*VENTA DE TICKETS* 🎟️
 
 En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
 
@@ -209,14 +209,28 @@ Puedes adquirir tus *tickets* 🎟️ aquí https://wakeupanddreamfestival.com/t
                     elif message_id == "taxis":
                         messenger.send_message(f'''TAXI 🚕
 
-    - *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
-    - *Servicio de Taxis Teletaxi - A Coruña* : +34 981 28 77 77''', mobile)
+- *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
+- *Servicio de Taxis Teletaxi - A Coruña* : +34 981 28 77 77''', mobile)
                         volveralmenuprincipal(mobile)
 
                     elif message_id == "autobus":
                         messenger.send_message(f'''LÍNEAS DE AUTOBÚS 🚌
 
-    Más adeante subiremos aquí las líneas de autobús urbano para llegar al recinto''', mobile)
+Más adeante subiremos aquí las líneas de autobús urbano para llegar al recinto''', mobile)
+                        volveralmenuprincipal(mobile)
+                    
+                    elif message_id == "masopciones":
+                        messenger.send_message(f'''OPCIONES EXTRA 🚌
+
+Durante el Festival se habilitarán las siguientes funcionalidades:
+- *Localización de barras, puntos de venta, zonas vip, servicios, etc ... en tiempo real*
+- *Solicitud de ayuda en tiempo real con envío de geolocalización y aviso a servicios de emergencia locales*
+- *Itinerario de actividades para realizar en la ciudad*
+- *Recomendación de actividades, sitios de ocio y restauración*
+- *Listado de precios en tiempo real*
+- *Sección de noticias actualizada para ver todas las novedades durante el evento*
+- *Sorteos automatizados*
+- *Por solo 1€ al día (durante la duración del festival) te informaremos constantemente sobre cambios, noticias, aviso de comienzo de actuaciones, situación en tiempo real de aforo, fotografías, etc ... ''', mobile)
                         volveralmenuprincipal(mobile)
 
                         
@@ -472,7 +486,13 @@ def menuprincipal(mobile):
                                                 "id": "autobus",
                                                 "title": "Autobús",
                                                 "description": "Lista y mapa con las líneas de transporte público de la ciudad.",
+                                            },
+                                            {
+                                                "id": "masopciones",
+                                                "title": "Más Opciones",
+                                                "description": "Opciones extra",
                                             }
+
                                                  
                                         ]
                                     }
