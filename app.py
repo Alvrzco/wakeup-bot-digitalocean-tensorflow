@@ -119,26 +119,10 @@ def hook():
                     #############################################################
                     #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN#
                     #############################################################
-                    fecha_festival = '2023/07/14'
-                    fecha_festival_d1 = datetime.datetime.strptime(fecha_festival, "%Y/%m/%d")
-                    present = datetime.datetime.now()
-                    countdown = fecha_festival_d1 - present
+                    
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
                         frases_aleatorias = chatbot_response(message)
-                        frases_aleatorias = ['''*¡Ya queda menos!*⌚
-Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
-Si *tienes dudas* puedes seleccionar una opción del menú''',
-'''*Muy pronto* habilitaremos las *ZONAS VIP* 🍾
-Podrás hacerte con un espacio único para disfrutar del festival con mayor comodidad
-Si *tienes dudas* puedes seleccionar una opción del menú''',
-'''No te olvides de seguirnos en *Instagram* 😉
-https://instagram.com/wakeupand_dreamfestival
-Si *tienes dudas* puedes seleccionar una opciión del menú''',
-"¡{name}!, Quedan menos de *{countdown} días* 🕒 para el festi del verano.Si *tienes dudas* puedes seleccionar una opción del menú"]
-                        messenger.send_message(f"{random.choice(frases_aleatorias)}",mobile)
-                        messenger.send_message(f"Elige una de las opciones del menú",mobile)
-                        menuprincipal(mobile)
 
                 elif message_type == "interactive":
                     message_response = messenger.get_interactive_response(data)
@@ -202,7 +186,23 @@ Si *tienes dudas* puedes seleccionar una opciión del menú''',
 Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
 https://instagram.com/wakeupand_dreamfestival
                             ''',mobile)
-                        volveralmenuprincipal(mobile)
+                        fecha_festival = '2023/07/14'
+                        fecha_festival_d1 = datetime.datetime.strptime(fecha_festival, "%Y/%m/%d")
+                        present = datetime.datetime.now()
+                        countdown = fecha_festival_d1 - present
+                        frases_aleatorias = ['''*¡Ya queda menos!*⌚
+Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
+Si *tienes dudas* puedes seleccionar una opción del menú''',
+'''*Muy pronto* habilitaremos las *ZONAS VIP* 🍾
+Podrás hacerte con un espacio único para disfrutar del festival con mayor comodidad
+Si *tienes dudas* puedes seleccionar una opción del menú''',
+'''No te olvides de seguirnos en *Instagram* 😉
+https://instagram.com/wakeupand_dreamfestival
+Si *tienes dudas* puedes seleccionar una opciión del menú''',
+"¡{name}!, Quedan menos de *{countdown} días* 🕒 para el festi del verano.Si *tienes dudas* puedes seleccionar una opción del menú"]
+                        messenger.send_message(f"{random.choice(frases_aleatorias)}",mobile)
+                        messenger.send_message(f"Elige una de las opciones del menú",mobile)
+                        menuprincipal(mobile)
 
                     elif message_id == "geoyparking":
                         messenger.send_message('''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
