@@ -126,7 +126,7 @@ def hook():
                         storage_context = StorageContext.from_defaults(persist_dir="storage") 
                         index = load_index_from_storage(storage_context)
                         query_engine = index.as_query_engine() 
-                        response = query_engine.query(question)
+                        response = query_engine.query(message)
                         messenger.send_message(response,mobile)
                         menuprincipal(mobile)
                         
