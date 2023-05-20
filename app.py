@@ -12,19 +12,16 @@ from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import pickle
 import numpy as np
+from llama_index import LLMPredictor, GPTSimpleVectorIndex, SimpleDirectoryReader,PromptHelper, ServiceContext,GPTVectorStoreIndex
+from langchain.chat_models import ChatOpenAI
+import os
+import config
 
-from tensorflow.keras.models import load_model
-model = load_model('chatbot_model.h5')
-import json
-import random
-
-intents = json.loads(open('intents.json').read())
-words = pickle.load(open('words.pkl','rb'))
-classes = pickle.load(open('classes.pkl','rb'))
 
 messenger = WhatsApp(environ.get("TOKEN"), phone_number_id=environ.get("PHONE_NUMBER_ID")) #this should be writen as 
 #WhatsApp(token = "inpust accesstoken", phone_number_id="input phone number id") #messages are not recieved without this pattern
 
+os.environ['OPENAI_API_KEY'] = config.OPENAI_API_KEY
 
 # Here's an article on how to get the application secret from Facebook developers portal.
 # https://support.appmachine.com/support/solutions/articles/80000978442
@@ -122,20 +119,10 @@ def hook():
                     
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
-                        respuesta = chatbot_response(message)
-                        mensajederespuesta = respuesta['res']
-                        messenger.send_message(mensajederespuesta,mobile)
-                        print(f"ESTOS SON LOS INTS {ints}",mobile)
-                        if not 'ints' in respuesta:
-                            volveralmenuprincipal(mobile)
-                        else:
-                            ints = respuesta['ints']
-                            if ints == 'opciones':
-                                menuprincipal(mobile)
-                            if ints == 'dudas_compra_online':
-                                boton_ayuda_compra(mobile)
-                            if ints == 'ayudageneral':
-                                menuprincipal(mobile)
+                        index = GPTSimpleVectorIndex.load_from_disk('index.json')
+                        response = index.query(message)
+                        messenger.send_message(response,mobile)
+                        menuprincipal(mobile)
                         
 
 
