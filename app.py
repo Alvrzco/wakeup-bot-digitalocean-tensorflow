@@ -665,7 +665,7 @@ def chatbot_response(msg):
     res = getResponse(ints, intents)
     respuesta['res'] = res
     if ints:
-        respuesta['ints'] = ints['ints'][0]['intent']
+        respuesta['ints'] = ints[0]['intent']
 
     return respuesta
 
