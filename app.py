@@ -427,7 +427,8 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                                     tup = (conversation_id,mobile,timestamp_caduca24h)
                                     mobile_tup = (mobile,)
                                     #update y enviar mensaje nuevo
-                                    messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
+                                    messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación. También puedes escribirme directamente
+                                    y te daré distinta información sobre el festival.",mobile)
                                     cursor = connection.cursor()
                                     cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
                                     cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
