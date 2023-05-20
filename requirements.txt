@@ -19,7 +19,7 @@ virtualenv==20.14.1
 Werkzeug==2.2.2
 mysql-connector
 datetime
-keras_nightly==2.5.0.dev2021032900
+keras_nightly==2.8.0
 tensorflow==2.8.0
 numpy==1.20
 nltk==3.6.2
