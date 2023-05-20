@@ -125,7 +125,8 @@ def hook():
                         service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
                         storage_context = StorageContext.from_defaults(persist_dir="storage") 
                         index = load_index_from_storage(storage_context)
-                        response = index.query(message)
+                        query_engine = index.as_query_engine() 
+                        response = query_engine.query(question)
                         messenger.send_message(response,mobile)
                         menuprincipal(mobile)
                         
