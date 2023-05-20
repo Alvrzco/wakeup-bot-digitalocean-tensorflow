@@ -379,7 +379,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
             #print(f"STAUTES: {statuses}")
             print({mobile})
             if mobile != None:
-                #mobile = messenger.get_mobile(data)
+                #smobile = messenger.get_mobile(data)
             
                 conversation_id = changes['statuses'][0]['conversation']['id']
                 
