@@ -119,13 +119,13 @@ def hook():
                         #https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_prompts.html
 
                         query_str = message
-                        context_str = "Eres un asistente virtual destinado a ayudar a los clientes en un festival llevado a cabo en A Coruña el 14 y 15 de Julio de 2023"
+                        context_str = "Eres un amable asistente virtual de festival realizado en A Coruña el 14 y 15 de Julio de 2023."
                         QA_PROMPT_TMPL = (
                                 "Proporcionamos información del contexto a continuación. \n"
                                 "---------------------\n"
                                 "{context_str}"
                                 "\n---------------------\n"
-                                "Dada esta información, por favor responde a la pregunta: {query_str}\n"
+                                "Dada esta información, por favor responde a la siguiente pregunta pudiendo dar información fuera del contexto siempre que no esté relacionada con política, violencia, drogas o sexo y esté ciertamente relacionada con el festival : {query_str}\n"
                         )
                         QA_PROMPT = QuestionAnswerPrompt(QA_PROMPT_TMPL)
                         llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0, model_name="ada-v2"))
