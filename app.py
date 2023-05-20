@@ -389,6 +389,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                 #mobile = messenger.get_mobile(data)
             
                 conversation_id = changes['statuses'][0]['conversation']['id']
+                timestamp_caduca24h = changes
             
                 phone_tup = (str(mobile),)
               
@@ -407,13 +408,13 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                         
                         
                         delivery = messenger.get_delivery(data)
-                        if delivery == "delivered":
+                        if delivery == "sent":
                             if checkprimeravezen24(mobile) == False:
                                 #Si no hay registros, añadimos el número de teléfono y el id de la conversación
                                 #Primera vez que entra DESDE SIEMPRE
                                 if not len(records):
                                     #insertar y enviar mensaje nuevo=
-                                    print(f"ENTRAMOS AQUI")
+                                    
                                     sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
                                     val = (mobile, conversation_id,1)
                                     cursor.execute(sql,val)
