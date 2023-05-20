@@ -126,7 +126,7 @@ def hook():
                         mensajederespuesta = respuesta['res']
                         ints = respuesta['ints']
                         messenger.send_message(mensajederespuesta,mobile)
-                        print("ESTOS SON LOS INTS {ints}",mobile)
+                        print(f"ESTOS SON LOS INTS {ints}",mobile)
                         if ints == 'noanswer':
                             volveralmenuprincipal(mobile)
                         if ints == 'opciones':
