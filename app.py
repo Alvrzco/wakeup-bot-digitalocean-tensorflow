@@ -647,7 +647,6 @@ def predict_class(sentence, model):
     return return_list
 
 def getResponse(ints, intents_json):
-    print(ints)
     if not ints:
         tag = "noanswer"
     else:
