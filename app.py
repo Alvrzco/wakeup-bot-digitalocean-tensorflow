@@ -7,9 +7,6 @@ import random
 from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request, make_response
-import nltk
-from nltk.stem import WordNetLemmatizer
-lemmatizer = WordNetLemmatizer()
 import pickle
 import numpy as np
 from llama_index import LLMPredictor, GPTSimpleVectorIndex, SimpleDirectoryReader,PromptHelper, ServiceContext,GPTVectorStoreIndex
