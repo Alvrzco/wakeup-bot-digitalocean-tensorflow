@@ -2,7 +2,7 @@ import os
 import logging
 import json
 import mysql.connector
-import datetime
+from datetime import datetime
 import random
 from heyoo import WhatsApp
 from os import environ
@@ -106,10 +106,11 @@ def hook():
                     #############################################################
                     #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN#
                     #############################################################
+                    fecha_festival = '2023/07/14'
+                    fecha_festival_d1 = datetime.strptime(fecha_festival, "%Y/%m/%d")
                     present = datetime.datetime.now()
-                    future = datetime.datetime(2023, 7, 14, 16, 0, 0)
-                    difference = future - present
-                    messenger.send_message(f"{difference}",mobile)
+                    countdown = present - fecha_festival_d1
+                    messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
                         frases_aleatorias = ['''*¡Ya queda menos!*⌚
 Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
