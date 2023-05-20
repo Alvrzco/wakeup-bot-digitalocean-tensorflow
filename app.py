@@ -383,7 +383,6 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
             if mobile != None:
                 #smobile = messenger.get_mobile(data)
             
-                conversation_id = changes['statuses'][0]['conversation']['id']
                 
             
                 phone_tup = (str(mobile),)
@@ -404,6 +403,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                         
                         delivery = messenger.get_delivery(data)
                         if delivery == "sent":
+                            conversation_id = changes['statuses'][0]['conversation']['id']
                             timestamp_caduca24h = changes['statuses'][0]['conversation']['expiration_timestamp']
                             if checkprimeravezen24(mobile) == False:
                                 #Si no hay registros, añadimos el número de teléfono y el id de la conversación
