@@ -110,7 +110,7 @@ def hook():
                     fecha_festival_d1 = datetime.datetime.strptime(fecha_festival, "%Y/%m/%d")
                     present = datetime.datetime.now()
                     countdown = fecha_festival_d1 - present
-                    messenger.send_message(f"Quedan {countdown.days} días",mobile)
+                    #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
                         frases_aleatorias = ['''*¡Ya queda menos!*⌚
 Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
