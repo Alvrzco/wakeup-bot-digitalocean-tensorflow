@@ -170,22 +170,22 @@ Si *tienes dudas* puedes seleccionar una opción del menú''',mobile)
                     elif message_id == "infogeneral_otros":
                         #messenger.send_template("eventbot_ayudaotros", mobile, components=[], lang="es_ES")
                         messenger.send_message('''*OTRAS DUDAS*
-    Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
-    https://instagram.com/wakeupand_dreamfestival
+Si tu pregunta no está relacionada con aspectos técnicos en cuanto a la plataforma de venta de tickets 🎟, puedes enviarnos un MD por *Instagram* e intentaremos contestarte lo antes posible
+https://instagram.com/wakeupand_dreamfestival
                             ''',mobile)
                         volveralmenuprincipal(mobile)
 
                     elif message_id == "geoyparking":
                         messenger.send_message('''Disponemos de una *ZONA DE APARCAMIENTO* en el recinto 🚗.
-    A pesar de ello, *RECOMENDAMOS* asistir al festival en *TRANSPORTE PÚBLICO* 🚌
-    Si seleccionas esta opción más adelante, te enviaré al instante la ubicación exacta de la zona.''', mobile)
+A pesar de ello, *RECOMENDAMOS* asistir al festival en *TRANSPORTE PÚBLICO* 🚌
+Si seleccionas esta opción más adelante, te enviaré al instante la ubicación exacta de la zona.''', mobile)
                         volveralmenuprincipal(mobile)
 
                         ############################################################ MAPA FESTI ####################################################################
 
                     elif message_id == "mapafesti":
                         messenger.send_message('''MAPA DEL FESTIVAL
-    Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
+Más adelante subiremos aquí el *mapa completo del festival*''', mobile)
                         volveralmenuprincipal(mobile)
 
                         ###########################################################################################################################################
@@ -193,20 +193,20 @@ Si *tienes dudas* puedes seleccionar una opción del menú''',mobile)
                     elif message_id == "infogeneral":
                         messenger.send_message('''VENTA DE TICKETS 🎟️
 
-    En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
+En nuestra página web tienes la información relevante acerca del festival 🎡 https://wakeupanddreamfestival.com
 
-    Puedes adquirir tus *tickets* 🎟️ aquí https://wakeupanddreamfestival.com/tickets/
+Puedes adquirir tus *tickets* 🎟️ aquí https://wakeupanddreamfestival.com/tickets/
 
-    *TIRADAS*
+*TIRADAS*
 
-    - *ABONO GENERAL (39€ + G.D)* - *AGOTADO*
-    - *ABONO GENERAL (45€ + G.D)* - *AGOTADO*
-    - *ABONO GENERAL (50€ + G.D)* - *AGOTADO*
-    - *ABONO GENERAL (55€ + G.D)* - *DISPONIBLES*
+- *ABONO GENERAL (39€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (45€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (50€ + G.D)* - *AGOTADO*
+- *ABONO GENERAL (55€ + G.D)* - *DISPONIBLES*
     ''', mobile)
                         volveralmenuprincipal(mobile)
 
-                    elif message_id == "taxi":
+                    elif message_id == "taxis":
                         messenger.send_message(f'''TAXI 🚕
 
     - *Servicio de Taxis RadioTaxi - A Coruña*: +34  981 24 33 33
