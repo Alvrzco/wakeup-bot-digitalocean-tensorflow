@@ -127,7 +127,7 @@ def hook():
                         index = load_index_from_storage(storage_context)
                         query_engine = index.as_query_engine() 
                         response = query_engine.query(message)
-                        messenger.send_message(response,mobile)
+                        messenger.send_message(str(response),mobile)
                         menuprincipal(mobile)
                         
 
