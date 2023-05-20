@@ -124,7 +124,7 @@ def hook():
                     if checkprimeravezen24(mobile) == True:
                         respuesta = chatbot_response(message)
                         mensajederespuesta = respuesta['res']
-                        ints = respuesta['ints']
+                        ints = respuesta['ints'][0]['intent']
                         messenger.send_message(mensajederespuesta,mobile)
                         print(f"ESTOS SON LOS INTS {ints}",mobile)
                         if ints == 'noanswer':
