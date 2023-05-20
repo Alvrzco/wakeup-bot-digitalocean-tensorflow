@@ -2,7 +2,7 @@ import os
 import logging
 import json
 import mysql.connector
-from datetime import datetime
+import datetime
 import random
 from heyoo import WhatsApp
 from os import environ
