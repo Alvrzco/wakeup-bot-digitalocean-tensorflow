@@ -2,6 +2,8 @@ import os
 import logging
 import json
 import mysql.connector
+import datetime
+import random
 from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request, make_response
@@ -104,10 +106,21 @@ def hook():
                     #############################################################
                     #COSAS ALEATORIAS PARA MANDAR SI YA ESTABLECIMOS CONVERSACIÓN#
                     #############################################################
+                    present = datetime.datetime.now()
+                    future = datetime.datetime(2023, 7, 14, 16, 0, 0)
+                    difference = future - present
+                    messenger.send_message(f"{difference.day}",mobile)
                     if checkprimeravezen24(mobile) == True:
-                        messenger.send_message('''*¡Ya queda menos!*⌚
+                        frases_aleatorias = ['''*¡Ya queda menos!*⌚
 Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
-Si *tienes dudas* puedes seleccionar una opción del menú''',mobile)
+Si *tienes dudas* puedes seleccionar una opción del menú''',
+'''*Muy pronto* habilitaremos las *ZONAS VIP* 🍾
+Podrás hacerte con un espacio único para disfrutar del festival con mayor comodidad
+Si *tienes dudas* puedes seleccionar una opción del menú''',
+'''No te olvides de seguirnos en *Instagram* 😉
+https://instagram.com/wakeupand_dreamfestival
+Si *tienes dudas* puedes seleccionar una opciión del menú''']
+                        messenger.send_message(f"{random.choice(frases_aleatorias)}",mobile)
                         messenger.send_message(f"Elige una de las opciones del menú",mobile)
                         menuprincipal(mobile)
 
