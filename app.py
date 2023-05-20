@@ -121,8 +121,7 @@ Si *tienes dudas* puedes seleccionar una opción del menú''',
 '''No te olvides de seguirnos en *Instagram* 😉
 https://instagram.com/wakeupand_dreamfestival
 Si *tienes dudas* puedes seleccionar una opciión del menú''',
-'''¡{name}!, Quedan menos de *{countdown} días* 🕒 para el festi del verano.
-Si *tienes dudas* puedes seleccionar una opción del menú''']
+"¡{name}!, Quedan menos de *{countdown} días* 🕒 para el festi del verano.Si *tienes dudas* puedes seleccionar una opción del menú"]
                         messenger.send_message(f"{random.choice(frases_aleatorias)}",mobile)
                         messenger.send_message(f"Elige una de las opciones del menú",mobile)
                         menuprincipal(mobile)
@@ -389,7 +388,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                 #mobile = messenger.get_mobile(data)
             
                 conversation_id = changes['statuses'][0]['conversation']['id']
-                timestamp_caduca24h = changes
+                
             
                 phone_tup = (str(mobile),)
               
@@ -409,11 +408,13 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                         
                         delivery = messenger.get_delivery(data)
                         if delivery == "sent":
+                            timestamp_caduca24h = changes['statuses'][0]['conversation']['expiration_timestamp']
                             if checkprimeravezen24(mobile) == False:
                                 #Si no hay registros, añadimos el número de teléfono y el id de la conversación
+                                #ESTO CREO QUE ES SI LA EMPIEZA LA EMPRESA
                                 #Primera vez que entra DESDE SIEMPRE
                                 if not len(records):
-                                    #insertar y enviar mensaje nuevo=
+                                    #insertar y enviar mensaje nuevo
                                     
                                     sql = "INSERT INTO wakeup_bot (phone, last_conver, check24h) VALUES (%s,%s,%s)"
                                     val = (mobile, conversation_id,1)
@@ -423,7 +424,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                                         #menuprincipal(mobile)
                                 elif records[0][0] != conversation_id:
                                     #Ya ha entrado pero la conversación no es la misma
-                                    tup = (conversation_id,mobile)
+                                    tup = (conversation_id,mobile,timestamp_caduca24h)
                                     mobile_tup = (mobile,)
                                     #update y enviar mensaje nuevo
                                     messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación.",mobile)
