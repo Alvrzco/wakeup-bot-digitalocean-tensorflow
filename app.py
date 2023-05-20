@@ -109,7 +109,7 @@ def hook():
                     present = datetime.datetime.now()
                     future = datetime.datetime(2023, 7, 14, 16, 0, 0)
                     difference = future - present
-                    messenger.send_message(f"{difference.day}",mobile)
+                    messenger.send_message(f"{difference}",mobile)
                     if checkprimeravezen24(mobile) == True:
                         frases_aleatorias = ['''*¡Ya queda menos!*⌚
 Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
