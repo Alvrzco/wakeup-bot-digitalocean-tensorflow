@@ -1,0 +1,198 @@
+{
+   "intents":[
+      {
+         "tag":"saludos",
+         "patterns":[
+            "Hola",
+            "Hay alguien ahí",
+            "Hey",
+            "Hello",
+            "Good day"
+         ],
+         "responses":[
+            "¡Hola!, ¿Cómo te puedo ayudar?",
+            "¡Qué alegría verte de nuevo!",
+            "Espero que estés teniendo un buen día. Dime, ¿en qué te puedo ayudar?"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"comoestas",
+         "patterns":[
+            "Que tal estás?",
+            "Como estás"
+         ],
+         "responses":[
+            "¡Estoy genial!"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"adios",
+         "patterns":[
+            "Adiós",
+            "Hasta luego",
+            "Goodbye",
+            "Estuve bien estar chateando contigo, hasta luego",
+            "Hasta la próxima"
+         ],
+         "responses":[
+            "¡Nos vemos!",
+            "¡Que tengas un buen día!",
+            "¡Adiós! Espero verte pronto"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"gracias",
+         "patterns":[
+            "Gracias",
+            "Muchas gracias",
+            "Eso me ha ayudado",
+            "Increíble, gracias",
+            "Gracias por ayudarme"
+         ],
+         "responses":[
+            "¡Encantado de ayudarte!",
+            "¡Gracias a ti!",
+            "Un placer, jejeje"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"noanswer",
+         "patterns":[
+            
+         ],
+         "responses":[
+            "Lo siento, no te entiendo",
+            "No sé responder a eso... ¡Prueba con otra cosa!",
+            "No estoy seguro de estar entendiéndote"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"nombre",
+         "patterns":[
+         	"¿Como te llamas?",
+         	"¿Cual es tu nombre?",
+         	"¿De donde eres?",
+         	"¿Donde naciste?",
+         	"¿Te gusta Coruña?",
+         	"¿Quien es tu creador?"
+            
+         ],
+         "responses":[
+            "Mi nombre es EventBot y seré tu asistente virtual durante el Wake Up & Dream. Puedes preguntarme lo que quieras, pero recuerda que mi conocimiento está limitado a preguntas (realistas) acerca del festival."
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"alegraciones",
+         "patterns":[
+         	"Me alegro",
+         	"Enhorabuena",
+         	"Felicidades"
+         ],
+         "responses":[
+            "Lo siento, no te entiendo",
+            "No sé responder a eso... ¡Prueba con otra cosa!",
+            "No estoy seguro de estar entendiéndote"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"ayudageneral",
+         "patterns":[
+         	"Necesito ayuda",
+         	"Tengo un problema",
+         	"¿Me puedes ayudar?"
+         ],
+         "responses":[
+            "Te envío el menú principal para que puedas seleccionar la opción que más se amolde a ti."
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"transporte",
+         "patterns":[
+         	"Autobús",
+         	"Taxi",
+         	"Transporte",
+         	"Zona de aparcamiento",
+         	"Zona de parking"
+         ],
+         "responses":[
+            "Todavía no tengo información de las líneas de transporte, y de a zona de aparcamiento del festival. ¡Te avisaré por aquí y por redes sociales cuando la tenga!"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"opciones",
+         "patterns":[
+            "¿Como me podrías ayudar?",
+            "¿Qué puedes hacer?",
+            "¿Qué tipo de ayuda ofreces?",
+            "¿Cómo puedes ser de ayuda?",
+            "¿Qué tipo de soporte ofreces?"
+         ],
+         "responses":[
+            "Soy tú asistente personal durante el festival. Puedes preguntarme lo que quieras e intentaré responderte",
+            "Mi nombre es EventBot, soy el asistente personal del Wake Up & Dream. Puedes preguntarme lo que quieras e intentaré ayudarte"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"dudas_compra_online",
+         "patterns":[
+            "Tengo problemas con las entradas",
+            "No me ha llegado la entrada",
+            "Me han cobrado la entrada dos veces",
+            "Quiero devolver la entrada",
+            "¿Las entradas son nominativas?"
+         ],
+         "responses":[
+            "Si tienes dudas con la venta online puedes seleccionar una de estas opciones",
+            "¡Estoy aquí para ayudarte! Selecciona una de las siguientes opciones"
+         ],
+         "context":[
+            ""
+         ]
+      },
+      {
+         "tag":"chiste",
+         "patterns":[
+            "Cuéntame un chiste",
+            "¿Me puedes contar un chiste?",
+            "Di algo gracioso",
+            "Hazme reír"
+         ],
+         "responses":[
+            "¡Déjate de chiste! ¿Te piensas que soy Siri?"
+         ],
+         "context":[
+            ""
+         ]
+      }
+   ]
+}

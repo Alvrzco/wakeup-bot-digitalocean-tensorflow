@@ -7,6 +7,16 @@ import random
 from heyoo import WhatsApp
 from os import environ
 from flask import Flask, request, make_response
+import nltk
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+import pickle
+import numpy as np
+
+from tensorflow.keras.models import load_model
+model = load_model('chatbot_model.h5')
+import json
+import random
 
 
 
@@ -27,6 +37,7 @@ VERIFY_TOKEN = environ.get("APP_SECRET") #application secret here
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
+
 
 app = Flask(__name__)
 
@@ -112,6 +123,7 @@ def hook():
                     countdown = fecha_festival_d1 - present
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
+                        frases_aleatorias = chatbot_response(message)
                         frases_aleatorias = ['''*¡Ya queda menos!*⌚
 Échale un vistazo a nuestra web si todavía no la has visitado 😃 https://wakeupanddreamfestival.com
 Si *tienes dudas* puedes seleccionar una opción del menú''',
@@ -427,8 +439,7 @@ Durante el Festival se habilitarán las siguientes funcionalidades:
                                     tup = (conversation_id,mobile,timestamp_caduca24h)
                                     mobile_tup = (mobile,)
                                     #update y enviar mensaje nuevo
-                                    messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación. También puedes escribirme directamente
-                                    y te daré distinta información sobre el festival.",mobile)
+                                    messenger.send_message(f"Soy EventBot 🤖, tu asistente personal durante todo el *Wake Up & Dream*. Soy un poco torpe y a las 24h me reinicio para descansar y olvido toda nuestra conversación 😇. Toda la información que necesitas está disponible a través del *MENÚ PRINICPAL* que aparece a continuación. También puedes escribirme directamente y te daré distinta información sobre el festival.",mobile)
                                     cursor = connection.cursor()
                                     cursor.execute('''UPDATE wakeup_bot SET last_conver = %s WHERE phone = %s''',tup)
                                     cursor.execute('''UPDATE wakeup_bot SET check24h = 1 WHERE phone = %s''',mobile_tup)
@@ -576,6 +587,63 @@ def enviarcontacto_eata(mobile):
 
     except Exception as err:
         messenger.send_message(str(err),mobile)
-            
+
+def clean_up_sentence(sentence):
+    # tokenize the pattern - split words into array
+    sentence_words = nltk.word_tokenize(sentence)
+    # stem each word - create short form for word
+    sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
+    return sentence_words
+
+# return bag of words array: 0 or 1 for each word in the bag that exists in the sentence
+
+def bow(sentence, words, show_details=True):
+    # tokenize the pattern
+    sentence_words = clean_up_sentence(sentence)
+    # bag of words - matrix of N words, vocabulary matrix
+    bag = [0]*len(words)  
+    for s in sentence_words:
+        for i,w in enumerate(words):
+            if w == s: 
+                # assign 1 if current word is in the vocabulary position
+                bag[i] = 1
+                if show_details:
+                    print ("found in bag: %s" % w)
+    return(np.array(bag))
+
+def predict_class(sentence, model):
+    # filter out predictions below a threshold
+    p = bow(sentence, words,show_details=False)
+    res = model.predict(np.array([p]))[0]
+    ERROR_THRESHOLD = 0.80
+    results = [[i,r] for i,r in enumerate(res) if r>ERROR_THRESHOLD]
+    # sort by strength of probability
+    results.sort(key=lambda x: x[1], reverse=True)
+    return_list = []
+    for r in results:
+        return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
+    return return_list
+
+def getResponse(ints, intents_json):
+    print(ints)
+    if not ints:
+        tag = "noanswer"
+    else:
+        tag = ints[0]['intent']
+    list_of_intents = intents_json['intents']
+    for i in list_of_intents:
+        if(i['tag']== tag):
+            result = random.choice(i['responses'])
+            break
+    return result
+
+def chatbot_response(msg):
+    ints = predict_class(msg, model)
+    res = getResponse(ints, intents)
+    return res
+
+
+
+
 if __name__ == '__main__': 
     app.run(debug=True)
