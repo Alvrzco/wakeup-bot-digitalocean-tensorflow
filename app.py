@@ -123,7 +123,15 @@ def hook():
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
                         respuesta = chatbot_response(message)
-                        messenger.send_message(respuesta,mobile)
+                        mensajederespuesta = respuesta['res']
+                        ints = respuesta['ints']
+                        messenger.send_message(mensajederespuesta,mobile)
+                        if ints == 'noanswer':
+                            volveralmenuprincipal(mobile)
+                        if ints == 'opciones':
+                            menuprincipal(mobile)
+                        if ints == 'dudas_compra_online':
+                            boton_ayuda_compra(mobile)
 
 
                 elif message_type == "interactive":
@@ -140,34 +148,7 @@ def hook():
                        
                         #Enviar mensaje template ayuda compra.
                         messenger.send_template("eventbot_ayudacompra", mobile, components=[], lang="es_ES")
-                        button_ayudacompra={
-                                "header": "Ayuda proceso de compra",
-                                "body": "Elige una de las siguientes opciones",
-                                "footer": "WakeUp & Dream - EventBot",
-                                "action": {
-                                    "button": "Lista de Opciones",
-                                    "sections": [
-                                        {
-                                            "title": "Problemas entradas",
-                                            "rows": [
-                                                {"id": "infogeneral_nollegaentrada", "title": "Ticket(s) no recibido(s)", "description": ""},
-                                                {
-                                                    "id": "infogeneral_cargoduplicado",
-                                                    "title": "Cargo duplicado",
-                                                    "description": "",
-                                                },
-                                                {
-                                                    "id": "infogeneral_otros",
-                                                    "title": "Otros problemas",
-                                                    "description": "",
-                                                }
-                                            
-                                            ]
-                                        }
-                                    ]
-                                }
-                        }
-                        messenger.send_button(button_ayudacompra,mobile)
+                        boton_ayuda_compra(mobile)
 
                     elif message_id == "infogeneral_nollegaentrada":
                         messenger.send_template("eventbot_nollegaentrada", mobile, components=[], lang="es_ES")
@@ -565,6 +546,38 @@ def checkprimeravezen24(mobile):
     except Exception as err:
         print(err)
 
+def boton_ayuda_compra(mobile):
+    try:
+        button_ayudacompra={
+                                "header": "Ayuda proceso de compra",
+                                "body": "Elige una de las siguientes opciones",
+                                "footer": "WakeUp & Dream - EventBot",
+                                "action": {
+                                    "button": "Lista de Opciones",
+                                    "sections": [
+                                        {
+                                            "title": "Problemas entradas",
+                                            "rows": [
+                                                {"id": "infogeneral_nollegaentrada", "title": "Ticket(s) no recibido(s)", "description": ""},
+                                                {
+                                                    "id": "infogeneral_cargoduplicado",
+                                                    "title": "Cargo duplicado",
+                                                    "description": "",
+                                                },
+                                                {
+                                                    "id": "infogeneral_otros",
+                                                    "title": "Otros problemas",
+                                                    "description": "",
+                                                }
+                                            
+                                            ]
+                                        }
+                                    ]
+                                }
+                        }
+        messenger.send_button(button_ayudacompra,mobile)
+    except Exception as err:
+        messenger.send_message('No puedo procesar esta petición ahora.',mobile)
 def enviarcontacto_eata(mobile):
     try:
         contacts = [{
@@ -590,7 +603,7 @@ def enviarcontacto_eata(mobile):
         messenger.send_contacts(contacts, mobile)
 
     except Exception as err:
-        messenger.send_message(str(err),mobile)
+        messenger.send_message("No puedo procesar esta petición ahora",mobile)
 
 def clean_up_sentence(sentence):
     # tokenize the pattern - split words into array
@@ -642,9 +655,12 @@ def getResponse(ints, intents_json):
     return result
 
 def chatbot_response(msg):
+    respuesta = dict();
     ints = predict_class(msg, model)
     res = getResponse(ints, intents)
-    return res
+    respuesta['res'] = res
+    respuesta['ints'] = ints
+    return respuesta
 
 
 
