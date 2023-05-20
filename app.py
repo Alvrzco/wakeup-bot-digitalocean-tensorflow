@@ -224,13 +224,20 @@ Más adeante subiremos aquí las líneas de autobús urbano para llegar al recin
 
 Durante el Festival se habilitarán las siguientes funcionalidades:
 - *Localización de barras, puntos de venta, zonas vip, servicios, etc ... en tiempo real*
+
 - *Solicitud de ayuda en tiempo real con envío de geolocalización y aviso a servicios de emergencia locales*
+
 - *Itinerario de actividades para realizar en la ciudad*
+
 - *Recomendación de actividades, sitios de ocio y restauración*
+
 - *Listado de precios en tiempo real*
+
 - *Sección de noticias actualizada para ver todas las novedades durante el evento*
+
 - *Sorteos automatizados*
-- *Por solo 1€ al día (durante la duración del festival) te informaremos constantemente sobre cambios, noticias, aviso de comienzo de actuaciones, situación en tiempo real de aforo, fotografías, etc ... ''', mobile)
+
+- *Por solo 1€ al día (durante la duración del festival) te informaremos constantemente sobre cambios, noticias, aviso de comienzo de actuaciones, situación en tiempo real de aforo, fotografías, etc ...*''', mobile)
                         volveralmenuprincipal(mobile)
 
                         
