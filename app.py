@@ -661,6 +661,8 @@ def getResponse(ints, intents_json):
 def chatbot_response(msg):
     respuesta = dict();
     ints = predict_class(msg, model)
+    if not ints:
+        inst = "noanswer"
     res = getResponse(ints, intents)
     respuesta['res'] = res
     respuesta['ints'] = ints
