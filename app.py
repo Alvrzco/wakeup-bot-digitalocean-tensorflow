@@ -9,7 +9,7 @@ from os import environ
 from flask import Flask, request, make_response
 import pickle
 import numpy as np
-from llama_index import LLMPredictor, GPTSimpleVectorIndex, SimpleDirectoryReader,PromptHelper, ServiceContext,GPTVectorStoreIndex
+from llama_index import LLMPredictor, GPTVectorStoreIndex, SimpleDirectoryReader,PromptHelper, ServiceContext,GPTVectorStoreIndex
 from langchain.chat_models import ChatOpenAI
 import os
 import config
@@ -116,7 +116,7 @@ def hook():
                     
                     #messenger.send_message(f"Quedan {countdown.days} días",mobile)
                     if checkprimeravezen24(mobile) == True:
-                        index = GPTSimpleVectorIndex.load_from_disk('index.json')
+                        index = GPTVectorStoreIndex.load_from_disk('index.json')
                         response = index.query(message)
                         messenger.send_message(response,mobile)
                         menuprincipal(mobile)
